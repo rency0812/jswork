@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function loadXMLDoc(){
+				var xmlhttp;
+				if(window.XMLHttpRequest)
+				{
+					xmlhttp=new XMLHttpRequest();
+				}else{
+					xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.onreadystatechange=function(){
+					if(xmlhttp.readyState==4&&xmlhttp.status==200)
+					{
+						document.getElementById("box").innerHTML=xmlhttp.responseText;
+					}
+				}
+				xmlhttp.open("GET","",true);
+				xmlhttp.send();
+			}
+		</script>
+	</body>
+</html>

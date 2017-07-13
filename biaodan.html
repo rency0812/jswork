@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单验证</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#wrap{
+				position: relative;
+				width: 400px;
+				height: 500px;
+				margin: 20px auto;
+				background: #00A6F1;
+			}
+			#wrap h1{
+				text-align: center;
+				font-size: 26px;
+				color: white;
+				background:#3181a5;
+				line-height: 50px;
+			}
+			#wrap div{
+				width: 292px;
+				height: 26px;
+				margin: 12px 60px 0 30px;
+				text-align: right;
+				overflow: hidden;
+				transition: 1s;
+			}
+			#wrap div p{
+				font-size: 14px;
+				color: lightcoral;
+			}
+			#wrap div.wrong{
+				height: 46px;
+			}
+			#wrap input{
+				padding-left: 6px;
+				display: inline-block;
+				height: 22px;
+				outline: 0;
+			}
+			#wrap input.right{
+				border: 1px solid #16f507;
+			}
+			#btn{
+				margin: 32px auto !important;
+			}
+			#btn .btn{
+				display: block;
+				width: 260px;
+				height: 26px;
+				margin: 0 auto;
+				outline: 0;
+				border: 0;
+				border-radius: 5px;
+				cursor: pointer;
+			}
+			#wrap .prompt{
+				position: absolute;
+				top: 20%;
+				left: 50%;
+				margin-left: -50px;
+				width: 128px;
+				height: 50px;
+				font-size: 16px;
+				text-align: center;
+				background: rgba(0,0,0,0.6);
+				color: white;
+				line-height: 50px;
+				transition: all 1.2s;
+				display: none;
+			}
+			#wrap p.show{
+				top: 30%;
+				display: block;
+			}
+			.msg{
+				padding: 8px;
+				width: 260px;
+			    height: 150px;
+			    background: rgba(0, 0, 0, 0.5);
+			    color: white;
+			    line-height: 30px;
+			    position: absolute;
+			    top: 30%;
+			    left: 40%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<h1>注册</h1>
+			<div>
+				<label>用户名：</label><input  type="text" required="required" placeholder="请输入用户名"/>
+				<p>字母开头,长度5-10位字母数字下划线</p>
+			</div>	
+			<div>
+				<label>密码：</label><input type="password" required="required" placeholder="请输入密码"/>
+				 <p>字母数字长度6-16字符，不包含空格</p>
+			</div>
+			<div>
+				<label>再次输入密码：</label><input type="password" required="required" placeholder="请确认密码"/>
+				<p>两次密码输入不一致</p>
+			</div>
+			<div>
+				<label>邮箱地址：</label><input type="text" required="required" placeholder="请输入邮箱地址"/>
+				<p>格式不正确</p>
+			</div>
+			<div>
+				<label>电话号码：</label><input type="text" required="required" placeholder="请输入电话号码"/>
+				<p>格式不正确</p>
+			</div>
+			<div>
+				<label>身份证号码：</label><input type="text" required="required" placeholder="请输入身份证号码"/>
+				<p>格式不正确</p>
+			</div>
+			<div id="btn">
+				<button class="btn">提交</button>
+			</div>
+			<p class="prompt">请先设置密码！</p>
+		</div>
+		<script type="text/javascript">
+			var div=document.querySelectorAll("#wrap div");
+			var inp=document.querySelectorAll("input");
+			var show=document.querySelector("#wrap p.prompt");
+			var btn=document.querySelector("#btn .btn");
+			console.log(btn);
+			var reg = [ /^[a-zA-Z_]\w{5,17}$/,
+			 			 /^[\w\.+\-\/\\!@#$%\^&*\(\)\[\]|~?,:\;'"{}`<>=]{6,18}$/,
+			 			 "",
+			 			 /^[1-9a-zA-Z_]\w*@[0-9a-zA-Z]+(\.[a-zA-Z]{2,})+$/,
+			        	 /^1[34578]\d{9}$/,
+			       		 /^[1-9]\d{16}[\dxX]$/
+			       ];
+           
+			//console.log(/3/.test(user.value));
+			for(var i=0;i<inp.length;i++){
+				inp[i].index=i;
+				if(i!=2){
+					inp[i].onblur=function(){
+					   var val=this.value;
+					   console.log(this.index);
+					   if(val){
+					   		var regobj=reg[this.index];
+					   		if(regobj.test(val)){
+					   			inp[this.index].className="right";
+					   			div[this.index].className="";
+					   		}else{
+					   			div[this.index].className="wrong";
+					   			this.focus();
+					   		}
+					    }
+					}
+				}else{
+					inp[2].onfocus=function(){
+						if(!inp[1].value){
+							show.className="prompt show"
+							inp[1].focus();
+							setTimeout(function(){
+								show.className="prompt"
+							},1800);
+						}else{
+							inp[2].onblur=function(){
+							if(this.value===inp[1].value){
+								inp[this.index].className="right";
+						   		div[this.index].className="";
+							}else{
+						   			div[this.index].className="wrong";
+					   				inp[1].focus();
+					   			}
+							}
+						}
+					}
+					
+				}
+		
+			};
+			btn.addEventListener("click",function(){
+				var div=document.createElement("div");
+				div.className="msg";
+				div.innerHTML="<p>用户名："+inp[0].value+"</p><p>密码："+inp[1].value+"</p><p>邮箱："+inp[3].value+"</p><p>电话号码:"+inp[4].value+"</p><p>身份证："+inp[5].value+"</p>";
+				//div.style.cssText="width:260px;height:150px;background:rgba(0,0,0,0.5);color:white;line-height:30px;position:absolute;top:30%;left:40%;"
+				document.body.appendChild(div);
+				document.querySelectorAll(".msg p").addEventListener("click",function(){
+					document.querySelector(".msg").style.display="none";
+				
+				});
+			});
+			
+		</script>
+	</body>
+</html>

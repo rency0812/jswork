@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>列表操作</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul li{
+				list-style: none;
+			}
+			#wrap{
+				width:607px;
+				margin: 30px auto;
+				text-align: center;
+				line-height: 30px;
+			}
+			table{
+				border-collapse: collapse;
+			}
+			table tr.true{
+				background: gray;
+			}
+			table tr td{
+				width: 100px;
+				height: 30px;
+			}
+			table tr td input{
+				display: inline-block;
+				width: 18px;
+				height: 18px;
+			}
+			table tr td:nth-child(6):hover{
+				color: red;
+				cursor: pointer;
+			}
+			#box ul li{
+				float: right;
+				width: 60px;
+				height: 30px;
+				background: #FF6600;
+				color: white;
+		        margin-top: 12px;
+		        margin-left: 8px;
+		        border: 1px solid black;
+		        cursor: pointer;
+			}
+			.cover{
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,0.4);
+			}
+			.list{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 300px;
+				height: 240px;
+				text-align: center;
+				margin-top: -150px;
+				margin-left: -120px;
+				background: white;
+			}
+			.list ul li{
+				margin: 15px 0;
+			}
+			.list .btn{
+				width: 50px;
+				height: 30px;
+			}
+	</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<table border="1">
+				<tbody>
+					<tr>
+						<td><input type="checkbox"/></td>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+						<td class="del">删除</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox"/></td>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+						<td class="del">删除</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox"/></td>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+						<td class="del">删除</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox"/></td>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+						<td class="del">删除</td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="box">
+				<ul>
+					<li>删除</li>
+					<li>取消</li>
+					<li>反选</li>
+					<li>全选</li>
+					<li>新增</li>
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript">
+			
+			(function(){
+				var table =document.querySelector("#wrap table").children[0];
+			   	var tr,del,length;
+			   	var boxli=document.querySelectorAll("#box ul li");
+			   	
+			   	getel();
+			   	
+			   	//每次删除后重新获取剩下的tr，以及td.del，以及对于的length
+			   	function getel(){
+			   		tr=table.querySelectorAll("tr");
+			   		del=table.querySelectorAll("tr td.del");
+			   		length=tr.length;
+			   	}
+			   	
+			   	//del点击事件函数
+                function delEvent(e){
+                	e=e||window.event;
+                	e.cancelBubble=true;
+                	if(confirm("确定删除？")){
+                		var p=this.parentNode;
+                		p.parentNode.removeChild(p);
+                		getel();
+                	}
+                }
+                
+                 //tr点击事件函数
+                 function trclick(){
+                 	var cbox=this.children[0].children[0];
+                 	cbox.checked=this.ifcheck=!this.ifcheck;
+                 	this.className=this.ifcheck+"";
+                 }
+                 
+                 //tr的操作
+                 (function(){
+                 	for(var i=0;i<length;i++)
+                 	{
+                 		tr[i].ifcheck=false;
+                 		tr[i].onclick=trclick;
+                 	}
+                 	for(i=0;i<length;i++)
+                 	{
+                 		del[i].onclick=delEvent;
+                 	}
+                 })();
+                 
+                 //新增等操作
+                 (function(){
+                 	
+                 	//新增
+                 	boxli[4].onclick=function(){
+                 		
+                 		var cdiv=document.createElement("div"),
+                 		    ldiv=document.createElement("div"),
+                 		    btn=document.createElement("input");
+                 		cdiv.className="cover";
+                 		ldiv.className="list";
+                 		ldiv.innerHTML="<ul><li>信息1：<input autofocus='autofocus' type='text' /></li><li>信息2：<input type='text' /></li><li>信息3：<input type='text' /></li><li>信息4：<input type='text' /></li></ul>"
+                 	    btn.type="button";
+                 	    btn.value="完成";
+                 	    btn.className="btn";
+                 	    btn.onclick=function(){
+                 	    	
+                 	    	 //创建四个输入信息对应的td
+                 	    	var li = ldiv.children[0].children;
+                 	    	var tdtxt="";
+                 	    	for(var i=0;i<li.length;i++){
+                 	    		var val=li[i].children[0].value;
+                 	    		if(val){
+                 	    			tdtxt+="<td>"+val+"</td>";
+                 	    		}else{
+                 	    			alert("输入内容不能为空！");
+                 	    			return;
+                 	    		}
+                 	    	};
+                 	    	//创建完整的tr
+                 	    	var ntr=document.createElement("tr"),
+                 	    	    ntd=document.createElement("td");
+                 	    	    ntr.innerHTML="<td><input type='checkbox'/></td>"+tdtxt;
+                 	    	    ntd.innerHTML="删除";
+                 	    	    ntd.className="del";
+                 	    	    ntd.onclick=delEvent;
+                 	    	    ntr.ifcheck=false;
+                 	    	    ntr.onclick=trclick;
+                 	    	    ntr.appendChild(ntd);
+                 	    	    table.appendChild(ntr);
+                 	    	    getel();
+                 	    	    document.body.removeChild(cdiv);
+                 	    };
+                 	    ldiv.appendChild(btn);
+                 	    cdiv.appendChild(ldiv);
+                 	    document.body.appendChild(cdiv);
+                 	};
+                 	//全选
+                 	boxli[3].onclick=function(){
+                 		for(var i=0;i<length;i++){
+                 			tr[i].children[0].children[0].checked=tr[i].ifcheck=true;
+                 			tr[i].className="true";
+                 		}
+                 	};
+                 	
+                 	//反选
+                 	boxli[2].onclick=function(){
+                 		for(var i=0;i<length;i++){
+                 			tr[i].children[0].children[0].checked=tr[i].ifcheck=!tr[i].ifcheck;
+                 			tr[i].className=tr[i].ifcheck+"";
+                 		}
+                 	};
+                 	
+                 	//取消
+                 	boxli[1].onclick=function(){
+                 		for(var i=0;i<length;i++){
+                 			tr[i].children[0].children[0].checked=tr[i].ifcheck=false;
+                 			tr[i].className="";
+                 		}
+                 	}
+                 	//删除
+                 	boxli[0].onclick=function(){
+                 		for(var i=0;i<length;i++){
+                 			if(tr[i].ifcheck){
+                 				table.removeChild(tr[i]);
+                 			}
+                 		}
+                 	};
+                 })();
+			})();
+			
+			
+		</script>
+	</body>
+</html>

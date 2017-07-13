@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>小球的运动</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				overflow: hidden;
+			}
+			.ball{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120px;
+            height: 120px;
+            border-radius: 100%;
+
+        }
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			runing(10);
+			function runing(num){
+				for(var i=0;i<num;i++)
+				{
+					var div=document.createElement("div");
+					div.className="ball";
+					div.leftVal=1+i;
+					div.topVal=3+i;
+					document.body.appendChild(div);
+					div.style.background=colorchange();
+				};
+				
+			var ball=document.querySelectorAll("div.ball");
+		
+			var maxW=document.documentElement.clientWidth-ball[0].clientWidth,
+			    maxH=document.documentElement.clientHeight-ball[0].clientHeight;
+			
+			window.onresize=function(){
+				maxW=document.documentElement.clientWidth-ball[0].clientWidth;
+			    maxH=document.documentElement.clientHeight-ball[0].clientHeight;
+			};
+			
+			play();
+			function play(){
+				for(var i=0;i<num;i++){
+					var nBall=ball[i];
+					var ctop=nBall.offsetTop;
+					var cleft=nBall.offsetLeft;
+					var top=ctop+nBall.topVal;
+					var left=cleft+nBall.leftVal;
+					
+					if(left>=maxW||left<=0){
+						left=Math.min(left,maxW);
+						left=Math.max(left,0);
+						nBall.leftVal = -nBall.leftVal;
+						nBall.style.background=colorchange();
+					}
+					
+					if(top>=maxH||top<=0){
+						top=Math.min(top,maxH);
+						top=Math.max(top,0);
+						nBall.topVal = -nBall.topVal;
+						nBall.style.background=colorchange();
+					}
+					nBall.style.top=top+"px";
+					nBall.style.left=left+"px";
+				}
+				requestAnimationFrame(play);
+			}
+		};
+		function colorchange(){
+			var r=Math.floor(Math.random()*256);
+			var g=Math.floor(Math.random()*256);
+			var b=Math.floor(Math.random()*256);
+			return "repeating-radial-gradient(rgb(255,255,255),rgb("+r+","+b+","+b+"))";
+		}
+		</script>
+	</body>
+</html>

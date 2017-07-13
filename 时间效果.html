@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>time</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul li{
+				list-style: none;
+			}
+			#box{
+				width: 340px;
+				height: 61px;
+				margin: 50px auto;
+				
+			}
+			#box ul li{
+				float: left;
+				margin: 0 3px;
+			}
+			#box ul li.bg{
+				width: 41px;
+				height: 61px;
+				text-align: center;
+				line-height: 41px;
+			}
+			#box ul li.dd{
+				width: 17px;
+				height: 61px;
+				text-align: center;
+				line-height: 41px;
+			}
+			#box ul li.b0{
+				background: url(img/0.png);
+			}
+			#box ul li.b1{
+				background: url(img/1.png);
+			}
+			#box ul li.b2{
+				background: url(img/2.png);
+			}
+			#box ul li.b3{
+				background: url(img/3.png);
+			}
+			#box ul li.b4{
+				background: url(img/4.png);
+			}
+			#box ul li.b5{
+				background: url(img/5.png);
+			}
+			#box ul li.b6{
+				background: url(img/6.png);
+			}
+			#box ul li.b7{
+				background: url(img/7.png);
+			}
+			#box ul li.b8{
+				background: url(img/8.png);
+			}
+			#box ul li.b9{
+				background: url(img/9.png);
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li class="bg b"></li>
+				<li class="bg b"></li>
+				<li class="dd"><img src="img/d.png"/></li>
+				<li class="bg b"></li>
+				<li class="bg b"></li>
+				<li class="dd"><img src="img/d.png"/></li>
+				<li class="bg b"></li>
+				<li class="bg b"></li>
+				
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var txt=document.querySelectorAll("#box ul li.bg");
+			
+			play();
+			function play(){
+				
+				var time=new Date();
+				var hh=time.getHours(),
+				    mm=time.getMinutes(),
+				    ss=time.getSeconds();
+				    
+				    hh<10?hh="0"+hh:hh=hh+"";
+				    mm<10?mm="0"+mm:mm=mm+"";
+				    ss<10?ss="0"+ss:ss=ss+"";
+				    chang(hh,mm,ss)
+				
+			};
+			
+			function chang(hh,mm,ss){
+				var str=hh+mm+ss;
+				for(var i=0;i<str.length;i++)
+				{
+				   txt[i].className="bg b"+str.charAt(i);	
+				}
+				console.log(txt);
+			}
+			setInterval(play,1000);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>交换值</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			var a=1;
+			var b=3;
+			var t=b;
+			b=b+(a-b);
+			a=b+a+a;
+			//t=b;
+			
+			console.log("a="+a,"b="+b);
+			
+			function indexOf(arr, item) {
+				   return arr.indexOf(item);
+				};
+		    console.log( indexOf([1,2,3],2) ); 	
+		    
+		    var arr=[1,2,3,1];
+			function remove(arr, item){
+			    var arr1=[];
+			    for(var i=0;i<arr.length;i++){
+			         if(arr[i]!=item){
+			            arr1.push(arr[i]);
+			         }
+			    }
+           			 return arr1;
+}
+			console.log( remove(arr, 1) );
+		</script>
+	</body>
+</html>

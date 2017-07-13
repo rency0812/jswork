@@ -1,0 +1,43 @@
+<!DOCTYPE html>  
+<html>  
+    <head>  
+        <meta charset="UTF-8">  
+        <title>盒子移动</title>  
+        <style type="text/css">  
+            *{margin: 0;padding: 0;border: none;}  
+            body{padding: 100px;}  
+            #box{width: 150px;height: 100px;background: cornflowerblue;position: absolute;}  
+        </style>  
+    </head>  
+    <body>  
+        <div id="box"></div>
+        <script type="text/javascript"> 
+       
+              var box=document.getElementById("box");
+              
+              box.onmousedown=function(e){
+              	e=e||window.event;
+              	
+              	var xdown=e.clientX;//鼠标按下时x的坐标
+              	var ydown=e.clientY;
+              	var leftdown=box.offsetLeft;
+              	var topdown=box.offsetTop;
+              	document.onmousemove=function(e){
+              		e=e||window.event;
+              		var xmove=e.clientX;//移动时x的坐标；
+              		var ymove=e.clientY;//移动时y的坐标;
+              		
+              		var x_=xmove-xdown;
+              		var y_=ymove-ydown;
+              		
+              		box.style.left=leftdown+x_+"px";
+              		box.style.top=topdown+y_+"px";
+              	};
+              	document.onmouseup=function(){
+              		this.onmouseup=null;
+              		this.onmousemove=null;
+              	}
+              }
+		</script>  
+    </body>  
+</html>  
