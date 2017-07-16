@@ -1,0 +1,46 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { display:block; }
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+ul,ol{list-style:none;}
+strong,b{font-weight:normal;}
+em,i{font-style:normal;}
+table{border-spacing:0;border-collapse:collapse;}
+img{border:0;vertical-align:middle;}
+input,select{vertical-align:middle;font-size:100%;line-height:150%;font-family:arial,'\5FAE\8F6F\96C5\9ED1',sans-serif;-webkit-appearance:none;}
+a{text-decoration:none;outline:none;hide-focus:expression(this.hideFocus=true);background-color:transparent;-webkit-tap-highlight-color:transparent;}
+
+body{font:14px/1.5 arial,"\5FAE\8F6F\96C5\9ED1",sans-serif;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;}
+
+/*
+       文字大小/行高 文字类型
+font:14px/1.5 arial
+    14的1.5倍
+*/
+/*
+    outline:none; 轮廓
+    hide-focus:expression(this.hideFocus=true); 兼容 针对于IE的写法 效果跟上面一样
+*/
+/*
+-webkit-text-size-adjust:none;
+想让网页字体小于12px而不等于12px的需求，那么就可以禁止浏览器文字大小调整功能 none
+因为有些英文是需要小于12px的
+*/
+
+/*
+-webkit-tap-highlight-color:transparent;
+在IOS下 点击链接通过js定义的可点击元素的时候，它就会出现一个半透明的灰色背景
+如果不要，就transparent
+如果要或想设置其他颜色，-webkit-tap-highlight-color: red | green
+*/
+
+/*
+   在开发微商城的时候,经常会遇到ios端和安卓端的样式显示不一样,例如同一按钮(样式一样)会显示不一样的颜色,导致项目整体的搭配不是很好.
+   -webkit-appearance: none,就可以去除浏览器默认样式
+
+   浏览器私有属性说明
+      为什么要有私有前缀呢？因为制定HTML和CSS标准的组织W3C动作是很慢的。
+      通常，有w3c组织成员提出一个新属性，比如说圆角border-radius，大家都觉得好，但是w3c不会为这个属性制定标准，而是要走很复杂的程序，经过很多审查。
+      而浏览器商不愿意等那么久，他们觉得一个属性已经够成熟了，就会在浏览器中加入支持。
+      但是避免日后w3c公布标准时有所变更，就会加入一个私有前缀，比如-webkit-border-radius，通过这种方式来提前支持新属性，
+      等到日后w3c公布了标准，border-radius的标准写法确立之后，再让新版的浏览器支持border-radius这种写法。
+*/

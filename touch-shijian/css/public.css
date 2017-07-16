@@ -1,0 +1,168 @@
+a{
+    color:#555;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.borderB{
+    border: 1px solid blue;
+}
+.borderR{
+    border: 1px solid red;
+}
+.borderP{
+    border: 1px solid purple;
+}
+.clearFix::after{
+    content: '';
+    display: block;
+    clear: both;
+    zoom:1;
+    overflow: hidden;
+}
+
+.header{
+
+}
+.header .place{
+    height: 142px;
+}
+.header .headFix{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index: 999;
+    background: #fbfbfa;
+}
+.header .headFix .hd-nav{
+    height: 74px;
+}
+.header .headFix .hd-nav .hd-nav-user{
+    padding: 18px 0 0 17px;
+}
+.header .headFix .hd-nav .search{
+    padding: 18px 17px 0 0 ;
+}
+.header .headFix .hd-nav .hd-nav-user a{
+    background: url('../img/hd-user.jpg');
+
+}
+.header .headFix .hd-nav .search a{
+    background: url('../img/hd-search.jpg');
+}
+.header .headFix .hd-nav a{
+    width:37px;
+    height: 37px;
+    display: block;
+}
+
+/*头部中部-logo-位置*/
+.header .headFix .hd-nav .hd-nav-province{
+    width: 212px;
+    height: 74px;
+    margin:0 auto;
+}
+
+.header .headFix .hd-nav .hd-nav-province .hd-logo{
+    padding-top: 18px;
+
+}
+.header .headFix .hd-nav .hd-nav-province .hd-logo a{
+    width: 115px;
+    height: 37px;
+
+    background: url('../img/hd-title.jpg');
+}
+
+.header .headFix .hd-nav .hd-nav-province .hd-location{
+    font-size: 26px;
+    padding-top: 20px;
+}
+
+.header .headFix .hd-nav .hd-nav-province .hd-location a{
+    width:80px;
+    height: 27px;
+}
+.header .headFix .hd-nav .hd-nav-province .hd-location a  i{
+    width: 22px;
+    height: 12px;
+    display: block;
+    background: url('../img/hd-select.jpg');
+    margin-top: 12px;
+}
+
+/*头部-下滑动导航*/
+.header .hd-move{
+    height: 68px;
+    background: #39424a;
+    overflow: hidden;
+}
+.header .hd-move ul{
+    display: table;
+    padding-top: 14px;
+
+}
+.header .hd-move ul li{
+    display: table-cell;
+    white-space: nowrap;
+    font-size: 24px;
+}
+.header .hd-move ul li.active a{
+    color: white;
+
+}
+.header .hd-move ul li a{
+    height: 42px;
+    line-height: 42px;
+    border-left: 2px solid #4a5259;
+    display: block;
+    color: #cfd3da;
+    padding: 0 30px;
+}
+.header .hd-move ul li:first-child a{
+    border: none;
+}
+.header .hd-move ul li.active a span{
+    display: inline-block;
+    border-bottom: 2px solid #f02387;
+}
+
+/*轮播图区域*/
+
+
+/*底部信息*/
+
+.footer{
+
+}
+
+.footer .login{
+    padding: 16px 24px;
+}
+.footer .login a{
+    font-size: 25px;
+    color: #585c64;
+}
+.footer p{
+    text-align: center;
+    color: #999;
+    font-size: 24px;
+}
+.footer p img{
+    vertical-align: middle;
+}
+.footer p span{
+    vertical-align: middle;
+}
+
+
+
+
+
+
+
+

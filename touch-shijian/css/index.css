@@ -1,0 +1,240 @@
+
+/*网页内容主体部分*/
+.main{
+    max-width: 660px;
+    margin:0 auto;
+}
+
+/*轮播图-开始*/
+.slide{
+    height: 198px;
+    overflow: hidden;
+    position: relative;
+}
+.slide ul{
+    height: 100%;
+}
+.slide ul li{
+    width:660px;
+    height: 100%;
+    float: left;
+
+}
+.slide ul li a{
+    display: block;
+    height: 100%;
+}
+/* 小圆点 */
+.slide .tab{
+    position: absolute;
+    left:0;
+    bottom:6px;
+    width: 100%;
+    text-align: center;
+    line-height: 0;
+}
+.slide .tab span{
+    width:12px;
+    height: 12px;
+    display: inline-block;
+    background: red;
+    border-radius: 6px;
+}
+.slide .tab span.on{
+    background: yellow;
+}
+/*轮播图-结束*/
+
+/*爱心提示-开始*/
+.tip{
+    height: 86px;
+}
+.tip a{
+    height: 100%;
+    display: block;
+}
+/*爱心提示-结束*/
+
+/*产品分类-开始*/
+.productClass{
+
+}
+.productClass ul{
+    display: -webkit-flex;
+    display: flex;
+}
+.productClass ul li{
+    -webkit-flex: 1;
+    flex: 1;
+}
+/*产品分类-结束*/
+
+/*新品优惠打折-开始*/
+.discount{
+
+}
+.discount .title{
+    height: 86px;
+}
+.discount a{
+    display: block;
+}
+
+.discount dl{
+    display: -webkit-flex;
+    display: flex;
+}
+.discount dl dt{
+    -webkit-flex: 1;
+    flex: 1;
+}
+.discount dl dd{
+    -webkit-flex: 1;
+    flex: 1;
+}
+/*新品优惠打折-结束*/
+
+/*化妆品-开始*/
+.publicBuy .buy{
+    height: 172px;
+}
+.publicBuy  a{
+    display: block;
+}
+.publicBuy ul{
+    display: -webkit-flex;
+    display: flex;
+}
+.publicBuy ul li{
+
+    -webkit-flex: 1;
+    flex: 1;
+}
+/*化妆品-结束*/
+
+/*大牌特惠-开始*/
+/*在公开样式表里面*/
+/*大牌特惠-结束*/
+
+/*林志玲内衣-开始*/
+.bras{
+
+}
+.bras .buy{
+    height: 190px;
+    overflow: hidden;
+}
+.bras ul{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content:space-around;
+    justify-content:space-around;
+    background: #ffcced;
+    padding: 8px 0 8px 10px;
+}
+.bras ul li{
+    width:151px;
+    height: 142px;
+}
+.bras ul li a{
+    display: block;
+    height: 100%;
+}
+.bras ul li a img{
+}
+/*林志玲内衣-结束*/
+
+/*广告图-1*/
+.adMap{
+    height: 194px;
+}
+.adMap a{
+    display: block;
+    height: 100%;
+}
+
+/*护肤护理*/
+.skin{
+    height: 310px;
+}
+.skin ul{
+    height: 100%;
+    display: -webkit-flex;
+    display: flex;
+}
+.skin ul li{
+    flex: 1;
+}
+
+/*新的发现*/
+.found{
+    height: 137px;
+}
+.found .find{
+    height: 100%;
+    display: -webkit-flex;
+    display: flex;
+}
+.found .find a{
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+
+/*热销好货*/
+.hotGoodShop{}
+.hotGoodShop .top{
+    height: 139px;
+}
+.hotGoodShop a{
+    display: block;
+}
+.hotGoodShop ul{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    margin-bottom: 19px;
+}
+.hotGoodShop ul li{
+    width:136px;
+    height: 162px;
+    padding: 10px 0;
+    font-size: 20px;
+    color: #9e1315;
+    text-align: center;
+    background: #f1f1f1;
+}
+.hotGoodShop ul li a{
+    width: 118px;
+    height: 125px;
+    margin: auto;
+    box-shadow: 1px 1px 5px #999;
+}
+.hotGoodShop ul li span{
+    line-height: 47px;
+}
+
+.vipapp{
+    padding: 16px 24px;
+}
+.vipapp div{
+    height: 72px;
+}
+.vipapp .vipBg{
+    width: 383px;
+    background: url('../img/vipbg.jpg');
+}
+.vipapp .appdownload{
+    width: 122px;
+    height: 48px;
+    border: 2px solid #cf3e8e;
+    text-align: center;
+    line-height: 48px;
+    font-size: 24px;
+}
+
+
+
+
+

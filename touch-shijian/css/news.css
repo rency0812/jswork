@@ -1,0 +1,139 @@
+/*选项卡*/
+.WX_content {
+    width: 100%;
+}
+
+.WX_content .WX_navbar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.WX_content .WX_navbar .navbar-item {
+    flex: 1;
+    font-size: 26px;
+    padding: 16px 0;
+    text-align: center;
+    color:#434343;
+    font-family:serif,'微软雅黑';
+    text-shadow:0 0 3px rgba(0,0,0,.4);
+    border-bottom: 1px solid #dddddd;
+}
+
+.WX_content .WX_navbar .navbar-item.navbar-item_on {
+    background: #eaeaea;
+}
+
+.WX_content .WX_navbar .navbar-item:not(:last-child) {
+    border-right: 1px solid #cccccc;
+}
+
+.WX_content .page_wrap {
+    width: 660px;
+    height: 640px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.WX_content .page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateX(10rem);
+    display: block;
+    transition: 0.5s;
+    background: #ffffff;
+    opacity: 0;
+}
+
+.WX_content .page:nth-of-type(1) {
+    -webkit-overflow-scrolling: touch;
+
+}
+
+.WX_content .page_on {
+    transform: translateX(0px);
+    opacity: 1;
+}
+.weui-cell{
+    display: block;
+    font-size: 22px;
+    border-bottom: 2px solid #ddd;
+}
+.weui-cell__hd{
+    padding: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.weui-cell__bd{
+    display: inline-block;
+    vertical-align: middle;
+}
+.weui-cell__ft{
+    font-size: 28px;
+    font-weight: bold;
+    color: #cdcdcd;
+    margin-left: 80px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.weui-cells img {
+    width: 84px;
+    height: 84px;
+    margin-right: 30px;
+    box-shadow: 0 0 2px #434343;
+}
+
+.weui-grid__icon{
+    padding: 25px 0;
+    text-align: center;
+    font-size: 23px;
+}
+.weui-grid__icon img{
+    width: 70px;
+    height: 70px;
+}
+.WX_content .page p {
+    vertical-align: sub;
+    display: inline-block; /*内联对象需加*/
+    width: 375px;
+    word-break: keep-all; /* 不换行 */
+    white-space: nowrap; /* 不换行 */
+    overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow: ellipsis;
+}
+
+.page .page_on{
+    overflow: hidden;
+}
+.WX_content .weui-cells {
+    margin: 0; padding: 0;
+}
+
+.page .weui-grids .weui-grid__label {
+    width: 100%;
+    text-align: center;
+    font-size: 23px;
+    padding: 25px 0;
+}
+.weui-grid{
+    border-right: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;;
+}
+.weui-grid:nth-child(3n+3){
+    border-right:none;
+}
+.page .weui-grid {
+    /*padding: 0.5rem 0.1rem;*/
+}
+
+.page .weui-grid {
+    position: relative;
+    float: left;
+    /*padding: 0.6rem .3rem;*/
+    width: 33.33333333%;
+    box-sizing: border-box;
+}
+
