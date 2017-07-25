@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>魅力新桂园 宣传活动</title>
+		<!--mui-->
+		<link href="//apps.bdimg.com/libs/mui/2.8.0/css/mui.min.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="css/preview.css" />
+		<link rel="stylesheet" href="css/animate.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<!--微信-->
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="/assets/js/wxlogin.js"></script>
+		<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<!--mui.js-->
+		<script src="//apps.bdimg.com/libs/mui/2.8.0/js/mui.min.js"></script>
+		<script src="js/mui.previewimage.js"></script>
+		<script src="js/mui.zoom.js"></script>
+		<script src="//cdn.bootcss.com/vue/2.3.2/vue.js"></script>
+		<script src="//cdn.bootcss.com/vue-router/2.5.3/vue-router.js"></script>
+		<script src="js/screen.js" type="text/javascript" charset="utf-8"></script>
+		<script src="//cdn.bootcss.com/layer/3.0.1/layer.min.js"></script>
+		<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+		<script src="js/jQueryRotate.2.2.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<music></music>
+			<router-view :user="user" :attendee="attendee" :activity="activity" ></router-view>
+		</div>
+		<!--中奖弹框-->
+		<div id="winDiv"></div>
+		<!--正在加载弹框-->
+		<div id="loadPop"></div>
+		<template id="indexPage">
+			<div id="index">
+				<div class="first">
+					<div class="head">
+						<div class="logo">
+							<img src="image/logo@2x.png" />
+						</div>
+						<div class="title-cloud">
+							<img src="image/cloud.png" />
+						</div>
+						<div class="title-sun">
+							<img src="image/sunlight.png" />
+						</div>
+						<div class="title">
+							<span><img src="image/meili-text.png" /></span>
+						</div>
+						<div class="plane">
+							<img src="image/plane.png" />
+						</div>
+						<div class="left-star1">
+							<img src="image/left3.png" />
+						</div>
+						<div class="left-star2">
+							<img src="image/left2.png" />
+						</div>
+						<div class="left-star3">
+							<img src="image/left1.png" />
+						</div>
+						<div class="right-star1">
+							<img src="image/right1.png" />
+						</div>
+						<div class="right-star2">
+							<img src="image/right2.png" />
+						</div>
+						<div class="head-foot animated flipInX">
+							<img src="image/city.png" />
+						</div>
+					</div>
+					<div class="footer">
+						<div class="c2">
+							<img src="image/c2.png" />
+						</div>
+						<div class="c1">
+							<img src="image/c1.png" />
+						</div>
+						<div class="c4">
+							<img src="image/c4.png" />
+						</div>
+						<div class="c3">
+							<img src="image/c3.png" />
+						</div>
+					</div>
+				</div>
+				<div class="second">
+					<div class="main">
+						<div class="mui-content-padded">
+							<div class="second-title">
+								<img src="image/safe.png"/>
+							</div>
+							<div class="carton">
+								<img src="image/carton-01.png" data-preview-src="" data-preview-group="1"/>
+							</div>
+							<div class="carton">
+								<img src="image/carton-02.png" data-preview-src="" data-preview-group="1"/>
+							</div>
+							<div class="carton">
+								<img src="image/carton-03.png" data-preview-src="" data-preview-group="1"/>
+							</div>
+							<div class="carton">
+								<img src="image/carton-04.png" data-preview-src="" data-preview-group="1"/>
+							</div>
+							<div class="carton">
+								<img src="image/carton-05.png" data-preview-src="" data-preview-group="1"/>
+							</div>
+							<div class="carton">
+								<img src="image/carton-06.png" data-preview-src="" data-preview-group="1"/>
+							</div>
+						</div>
+					</div>
+					<div class="rule-text">
+						<img src="image/rule-border.png" />
+						<div class="title">
+							<img src="image/rule.png" />
+							<div class="time">活动时间：2017.6.16-6.26 12:00</div>
+							<div class="text">1.分享活动链接到朋友圈，可进行抽奖。每人每天有3次抽奖机会;</div>
+							<div class="text">2.活动依据用户单次转发链接带来的点击量进行季度、年度大奖评选;</div>
+							<div class="text">3.参与转发用户需填写姓名及电话，季度、年度大奖统计完成将电话通知领奖;</div>
+							<div class="text">4.领取方式：抽奖奖品将由短信的形式派发,季度、年度奖品将由主办方电话告知;</div>
+							<div class="text">5.随机奖品：咖啡券、面包抵用券、100M本地流量;</div>
+							<div class="text">6.季度奖品：电影票4张;</div>
+							<div class="text">7.年度大奖：家庭豪华旅游基金8份;</div>
+						</div>
+					</div>
+					<div class="btn">
+						<span @tap="tolottery"><img src="image/lottery.png"/></span>
+						<span @tap="torecord"><img src="image/my-record.png"/></span>
+						<span @tap="toranking"><img src="image/ranking.png"/></span>
+					</div>
+					<div class="foot-text">版权所有&copy;桂园总工会&nbsp;&nbsp;技术支持&copy;深传互动</div>
+				</div>
+			</div>
+		</template>
+		<script>
+			var indexPage = Vue.component("index", {
+				template: "#indexPage",
+				props: [
+					"activity"
+				],
+				data: function() {
+					return {
+
+					}
+				},
+				methods: {
+					tolottery: function() {
+						var _this = this;
+						$.get("/activity/contact/show", {
+							actid: 38
+						}, function(res) {
+							if(res.errcode == "0000") {
+								if(res.contact != null) {
+									router.push('/rotate');
+								}
+								if(res.contact == null) {
+									router.push('/writeInfo')
+								}
+							}
+						})
+					},
+					torecord: function() {
+						router.push('/myrecord');
+					},
+					toranking: function() {
+						router.push('/rankList');
+					}
+				},
+				mounted: function() {
+					console.log(mui);
+					mui.previewImage();
+					setTimeout(function() {
+						$('#index .first .head').addClass('current');
+						$('#index .first .head .logo').css("display", "block").addClass('animated bounceInLeft');
+						$('#index .first .head .title-cloud').css("display", "block").addClass('animated bounceInRight');
+						$('#index .first .head .title-sun').css("display", "block").addClass('animated fadeInUpBig');
+						$('#index .first .head .title').css("display", "block").addClass('animated zoomIn');
+					}, 500);
+				}
+			});
+		</script>
+		<!--我的记录-->
+		<template id="myRecord">
+			<div id="recordpage">
+				<div class="body">
+					<img src="image/tip-1@2x.png" />
+					<span class="title"><img src="image/title-myRelay@2x.png"/></span>
+					<div class="content-title">
+						<div class="left">活动主题</div>
+						<div class="right">转发的点击次数</div>
+					</div>
+					<div class="body-content" v-for="item in list" v-show="show">
+						<div class="left" v-text="item.activity.title"></div>
+						<div class="right" v-text="item.support_cnt"></div>
+					</div>
+				</div>
+				<div class="btn" @tap="tofirst">
+					<img src="image/btn-lookfirst@2x.png" />
+				</div>
+				<div class="foot-text">版权所有&copy;桂园总工会&nbsp;&nbsp;技术支持&copy;深传互动</div>
+			</div>
+		</template>
+		<script>
+			var recordPage = Vue.component("vue-recode", {
+				template: "#myRecord",
+				props: [
+					"activity"
+				],
+				data: function() {
+					return {
+						shareNumber: '',
+						show: false,
+						list: [],
+					}
+				},
+				methods: {
+					tofirst: function() {
+						router.push('/index');
+						this.show = false;
+					}
+				},
+				mounted: function() {
+					w_loading.show();
+					var _this = this;
+					$.get("/activity/propaganda/my", {
+						act_id: _this.activity.id,
+						_token: SC._token,
+					}, function(res) {
+						w_loading.hide();
+						console.log(res);
+						if(res.errcode == "0000" && res.list.length > 0) {
+							_this.show = true;
+							_this.list = res.list;
+						}
+
+					})
+				},
+				destroyed: function() {
+					this.show = false;
+				}
+			});
+		</script>
+		<!--排行榜-->
+		<template id="rankList">
+			<div class="rank">
+				<img src="image/blue_bg2@2x.png" />
+				<div class="rankTit">
+					<img src="image/title-rank@2x.png" />
+				</div>
+				<div class="rank_content">
+					<div class="scroll">
+						<div class="scroll_list">
+							<span class="span" v-for="(item,index) in topItem" v-text="item.brief" @tap="tabChange(item.status,index)"></span>
+
+						</div>
+					</div>
+					<!--列表内容区-->
+					<div class="list_content">
+						<div class="list_contentTit">
+							<span>姓名</span>
+							<span>排名</span>
+							<span>转发次数</span>
+						</div>
+						<div class="list_detail" style="background: #8edafc; color: white;">
+							<div class="nick li_active" style="color: white;" v-text="myrealname"></div>
+							<div class="ranking li_active" style="color: white;" v-text="myrank"></div>
+							<div class="relay li_active" style="color: white;" v-text="myzf"></div>
+						</div>
+						<div class="list_content_in mui-scroll-wrapper muiPull">
+							<div class="list_inner mui-scroll">
+								<div class="list_detail" v-for="item in rankItems">
+									<div class="nick li_active" v-if="item.contact && item.contact.realname" v-text="item.contact.realname">
+
+										<!--<div class="nickname" v-text="item.contact.nickname"></div>-->
+									</div>
+									<div class="ranking li_active" v-text="item.rank"></div>
+									<div class="relay li_active" v-text="item.support_cnt"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--底部按钮-->
+				<div class="rankToIndex">
+					<img src="image/btn-lookfirst@2x.png" @tap="toindex" />
+				</div>
+				<!--页脚-->
+				<div class="footer">
+					版权所有&copy;桂园总工会 &nbsp;&nbsp;技术支持&copy;深传互动
+				</div>
+			</div>
+
+		</template>
+		<script type="text/javascript">
+			var rankList = Vue.component("rankList", {
+				template: "#rankList",
+				data: function() {
+					return {
+						rankItems: [],
+						page: 1,
+						topItem: [],
+						realname: '',
+						myrealname:'',
+						myrank:"",
+						myzf:'',
+						rankname:''
+					}
+				},
+				props: [
+					"attendee", "activity", "subscribe"
+				],
+				methods: {
+					refresh: function() {
+						var _this = this;
+						_this.page = 1;
+						console.log("下拉");
+						w_loading.show();
+						$.get("/activity/propaganda/rank", {
+							act_id: _this.activity.id,
+							page: _this.page
+						}, function(res) {
+							w_loading.hide();
+							console.log(res);
+							w_loading.hide();
+							if(res.errcode == "0000" && res.attendee && res.attendee.contact && res.attendee.contact.realname){
+								_this.myrealname=res.attendee.contact.realname
+							};
+							if(res.errcode == "0000" && res.attendee && res.attendee.rank){
+								_this.myrank=res.attendee.rank
+							};
+							if(res.errcode == "0000" && res.attendee && res.attendee.support_cnt){
+								_this.myzf=res.attendee.support_cnt
+							};
+							if(res.errcode == "0000" && res.data) {
+								_this.page++;
+								if(res.data && res.data.length > 0) {
+									_this.rankItems = res.data;
+									console.log(_this.rankItems);
+									mui('.muiPull').pullRefresh().endPulldownToRefresh();
+									mui('.muiPull').pullRefresh().refresh(true);
+								} else {
+									mui('.muiPull').pullRefresh().endPulldownToRefresh();
+								}
+							} else {
+								mui.toast("数据加载失败");
+								mui('.muiPull').pullRefresh().endPulldownToRefresh();
+							}
+						});
+
+					},
+					nextpage: function() {
+						console.log("上拉");
+
+						var _this = this;
+						$.get("/activity/propaganda/rank", {
+							act_id: _this.activity.id,
+							page: _this.page
+						}, function(res) {
+							_this.page++;
+							if(res.errcode == "0000" && res.data) {
+								if(res.data && res.data.length > 0) {
+									for(var i = 0; i < res.data.length; i++) {
+										_this.rankItems.push(res.data[i]);
+									}
+									mui('.muiPull').pullRefresh().endPullupToRefresh();
+
+								} else {
+									mui('.muiPull').pullRefresh().endPullupToRefresh(true);
+								}
+							} else {
+								mui.toast("数据加载失败");
+								mui('.muiPull').pullRefresh().endPullupToRefresh();
+							}
+						});
+					},
+					tabChange:function(a,b){
+						if(a==3){
+							this.refresh()
+						} else{
+							layer.msg('活动未开始')
+						}
+						$("span").eq(b).addClass("span_bg").siblings().removeClass("span_bg")
+					},
+					toindex: function() {
+						router.push("/index")
+					},
+					//					顶部滑动条
+					getTop: function() {
+						var _this = this;
+						$.get("/activity/propaganda/subactivities", {
+							actid: _this.activity.id
+						}, function(res) {
+							if(res.errcode == "0000" && res.activities) {
+								_this.topItem = res.activities;								
+							}
+						})
+					},
+					plusXing: function(str, frontLen, endLen) {
+						var len = str.length - frontLen - endLen;
+						var xing = '';
+						for(var i = 0; i < len; i++) {
+							xing += '*';
+						}
+						return str.substr(0, frontLen) + xing + str.substr(- endLen);
+					}
+
+				},
+				mounted: function() {
+					//					w_loading.show();
+					mui('.mui-scroll-wrapper').scroll();
+					mui(".muiPull").pullRefresh({
+						down: {
+							height: 50, //可选,默认50.触发下拉刷新拖动距离,
+							auto: true, //可选,默认false.自动下拉刷新一次
+							contentdown: "下拉可以刷新", //可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+							contentover: "释放立即刷新", //可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+							contentrefresh: "正在刷新...", //可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+							callback: this.refresh, //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+						},
+						up: {
+							height: 50, //可选.默认50.触发上拉加载拖动距离
+							//              auto: true,//可选,默认false.自动上拉加载一次
+							contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
+							contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
+							callback: this.nextpage,
+						}
+					});
+					this.getTop();
+				},
+			})
+		</script>
+		<!--抽奖-->
+		<template id="rotate">
+			<div id="rotate_all">
+				<!--头部图片-->
+				<div class="running_tit">
+					<img src="image/title.png" />
+				</div>
+				<!--转盘图片-->
+				<div class="running">
+					<div class="running_pic">
+						<img src="image/rotate_pic.png" />
+					</div>
+					<div class="running_indic" @tap="lottery">
+						<img src="image/lottery_concern.png" />
+					</div>
+				</div>
+				<!--有机会-->
+				<div class="rotate_chance" v-if="attendee && attendee.stock_cnt>0">
+					还有<span v-text="attendee && attendee.user_cnt ? attendee.user_cnt : 0">0</span>次抽奖机会
+				</div>
+				<!--无机会-->
+				 <div class="rotate_chance" v-if="attendee && attendee.user_cnt==0">
+				            暂无抽奖机会，快去转发动漫赚机会
+				 </div>
+
+				<!--底部两个按钮-->
+
+				<div class="indexBtn">
+					<img src="image/look_firstBtn.png" @tap="gotoIndex" />
+				</div>
+				<div class="my_prize">
+					<img src="image/myPrizeBtn.png" @tap="toPrize" />
+				</div>
+				<!--页脚-->
+				<div class="footer">
+					版权所有&copy;桂园总工会 &nbsp;&nbsp;技术支持&copy;深传互动
+				</div>
+
+			</div>
+		</template>
+		<script>
+			var rotate = Vue.component("rotate", {
+				template: "#rotate",
+				props: [
+					"attendee", "activity", "subscribe"
+				],
+				data: function() {
+					return {
+						angle: 0,
+						flag: false,
+						r_info: "",
+						room: "",
+						prize11: "",
+						winPname:'',
+						winPcover:'',
+						win1:false,
+						win2:false,
+					}
+				},
+				mounted: function() {
+						
+				},
+				methods: {
+					toPrize: function() {
+						router.push("/myPrize")
+					},
+					gotoIndex: function() {
+						router.push("/index")
+					},
+					lottery: function() {
+						var _this = this;
+
+//												
+//												win.timeStar(2)
+												if(this.activity.status != 3) {
+													layer.msg("不在规定的活动时间内！");
+													return false;
+												}
+												if(this.attendee.user_cnt <= 0) {
+													layer.msg("你没有抽奖机会！");
+													return false;
+												}
+						if(_this.flag) {
+							return;
+					}
+						_this.flag = true;
+						this.rotate();
+
+					},
+					rotate: function() {
+						var _this = this;
+						
+						$.post("/activity/propaganda/lottery", {
+							act_id: _this.activity.id,
+							attnd_id: _this.attendee.id,
+							_token: SC._token
+						}, function(res) {
+							if(res.errcode == "0000" && res.award != null) {
+								_this.win1=true;
+								if(res.award.prize.name){
+										_this.winPname = res.award.prize.name;
+										
+									}
+									if(res.award.prize.cover){
+										_this.winPcover = res.award.prize.cover;
+									}
+								console.log(res);
+								console.log(res.award.prize.remark);
+								_this.room = res.award.prize;
+								_this.$parent.decrementUserCount();
+								var tepl = 1080 + parseInt(res.award.prize.remark);
+								$('.running_pic img').stopRotate();
+								$(".running_pic img").rotate({
+									angle: 0,
+									duration: 5000,
+									animateTo: tepl,
+									callback: function() {
+										_this.flag = false;
+										win.show(_this.win1, _this.win2, _this.winPname, _this.winPcover);
+									}
+
+								});
+							} else if(res.errcode == "0000" && res.award == null) {
+								_this.win2 = true;
+								_this.win1=false;
+								_this.$parent.decrementUserCount();
+								$('.running_pic img').stopRotate();
+								$(".running_pic img").rotate({
+									angle: 0,
+									duration: 5000,
+									animateTo: 1080 + 22.5,
+									callback: function() {
+//										layer.msg("谢谢参与");
+											win.show(_this.win1,_this.win2,_this.winPname,_this.winPcover );	
+										_this.flag = false;
+									}
+
+								})
+							}else if(res.errcode != "0000"){
+								win.hide();
+								_this.flag = false;
+								layer.msg("暂无参与资格")
+							}
+
+						})
+					}
+				},
+				destroyed:function(){
+					win.hide();
+				}
+			});
+		</script>
+		<!--中奖弹框-->
+		<template id="winPrize">
+			<div id="win" v-if="isShow">
+				<div class="win_cover" @tap="toclose"></div>
+				<div class="win_content">
+					<img src="image/win_bg.png" />
+					<div class="win_pic" v-if="win1"><img :src=winPic /></div>
+					<div class="win_text" v-if="win1" v-text="'恭喜你中了'+winPname"></div>
+					<!--没中-->
+					<div class="no_win" v-if="win2">
+						<img src="image/no_prize.png" />
+					</div>
+					<div class="no_winText" v-if="win2">
+						恭喜你躲过了所有的奖项
+					</div>
+				</div>
+			</div>
+		</template>
+		<script type="text/javascript">
+			var winPrize = Vue.component("winPrize", {
+				template: "#winPrize",
+				data: function() {
+					return {
+						timer: "",
+						time: 2,
+						isShow: false,
+						win1: false,
+						win2: false,
+						winPic: "",
+						winPname:'',
+						
+					}
+				},
+				props: [
+					"attendee", "activity", "subscribe"
+				],
+				mounted: function() {
+					
+				},
+				methods: {
+					show: function(a,b,c,d) {
+						var _this = this;
+						_this.isShow = true;
+						_this.win1=a;
+						_this.win2=b;
+						_this.winPic=d;
+						_this.winPname=c;
+					},
+					hide: function() {
+						var _this = this;
+						_this.isShow = false;
+					},
+					timeStar: function(second) {
+						var _this = this;
+						_this.time = second;
+						_this.timer = setInterval(function() {
+							if(_this.time) {
+								_this.time--;
+							} else {
+								clearInterval(_this.timer);
+								//								_this.isShow = false;
+							}
+						}, 1000)
+					},
+					toclose:function(){
+						var _this = this;
+						_this.isShow = false;
+					},
+				},
+			});
+			var win = new winPrize();
+			win.$mount("#winDiv");
+		</script>
+		<!--填写信息-->
+		<template id="writeInfo">
+			<div id="writeInfo_in">
+				<img src="image/blue_bg2@2x.png" />
+				<div class="writeInfoTit">
+					<img src="image/title-writeInfo@2x.png" />
+				</div>
+				<div class="writeContent">
+					<div class="writeContent_in">
+						<div class="writeName">姓名 </div><input type="text" name="fillname" class="nameInput" v-model="name" placeholder="请填写您的姓名" />
+						<div class="writePhone">手机</div><input type="number" name="fillPhone" class="phoneInput" v-model="phone" placeholder="请填写您的手机号码" />
+					</div>
+				</div>
+				<!--提交按钮-->
+				<div class="submitBtn" @tap="submit">
+					<img src="image/btn-submit@2x.png" />
+				</div>
+				<div class="footer">
+					版权所有&copy;桂园总工会 &nbsp;&nbsp;技术支持&copy;深传互动
+				</div>
+			</div>
+		</template>
+		<script type="text/javascript">
+			var writeInfo = Vue.component('writeInfo', {
+				template: "#writeInfo",
+				props: [
+					"attendee", "subscribe", "activity"
+				],
+				data: function() {
+					return {
+						name: '',
+						phone: ''
+					}
+				},
+				methods: {
+					submit: function() {
+
+						var _this = this;
+						//						if(!_this.subscribe) {
+						//							layer.msg("未关注");
+						//							return false;
+						//						}
+						if(!_this.name) {
+							layer.msg("请输入姓名！");
+							return false;
+						}
+						if(!_this.phone) {
+							layer.msg("请输入手机号码！");
+							return false;
+						}
+						var reg = /^1[3|4|5|7|8][0-9]{9}$/;
+						if(!reg.test(_this.phone)) {
+							layer.msg("请输入正确的手机号码！");
+							return false;
+						}
+						var fillName = $("input[name='fillName']").val();
+						var fillPhone = $("input[name='fillPhone']").val();
+						$.post("/activity/contact/create", {
+								actid: _this.activity.id,
+								attndid: _this.attendee.id,
+								realname: _this.name,
+								mobile: _this.phone,
+								_token: SC._token
+							},
+							function(res) {
+								console.log(res);
+								if(res.errcode == "0000") {
+									layer.msg("提交成功");
+									setTimeout(function(){
+										router.push("/rotate");
+									},2000);
+									
+								} else {
+									layer.msg("提交失败");
+								}
+							})
+					}
+				},
+				mounted: function() {
+
+				},
+				destroyed: function() {
+					
+				}
+
+			})
+		</script>
+		<!--我的奖品-->
+		<template id="myPrize">
+			<div id="prize">
+				<img src="image/blue_bg2@2x.png" />
+				<div class="awardTit"><img src="image/title-myPrize@2x.png" /></div>
+				<!--内容的框-->
+				<div class="award_content">
+					<div class="content_in mui-scroll-wrapper muiPull" v-show="active1">
+						<div class="content_inner mui-scroll">
+							<div class="prize_list" v-for="item in prizeItems">
+								<div class="prize_pic" v-if="item && item.prize && item.prize.cover">
+									<img :src=item.prize.cover />
+								</div>
+								<div class="prize_info">
+									<div class="info_name" v-if="item && item.prize && item.prize.name" v-text="item.prize.name"></div>
+									<div class="prizer_name" v-text="infoname"></div>
+									<div class="prize_phone" v-text="'('+infophone+')'"></div>
+								</div>
+								<!--<div class="getBtn1" @tap="getAward" v-if="w_flag1">领取</div>-->
+								<!--<div class="getBtn2" v-if="w_flag2">已填写</div>-->
+							</div>
+							<!--注解-->
+							<!--<div class="mind">
+								注：活动结束后48小时之内未填写的则视为自动放弃获奖资格
+							</div>-->
+						</div>
+					</div>
+					<!--没有奖品-->
+					<div class="content_in2" v-show="active2">
+						<div class="no_prize">
+							<img src="image/noPrize.png" />
+						</div>
+						<div class="noPrizeTip">暂无奖品</div>
+					</div>
+
+				</div>
+				<!--底部按钮-->
+				<div class="back_btn" @tap="toIndex">
+					<img src="image/btn-backIndex@2x.png" />
+				</div>
+				<div class="foot_text">版权所有&copy;桂园总工会&nbsp;&nbsp;技术支持&copy;深传互动</div>
+			</div>
+		</template>
+		<script>
+			var myPrize = Vue.component("myPrize", {
+				template: "#myPrize",
+				data: function() {
+					return {
+						active1: false, //有奖品
+						active2: false, //无奖品
+						prizeItems: "",
+						infoname: '',
+						infophone: '',
+						page:1
+
+					}
+				},
+				props: ["activity"],
+				mounted: function() {
+
+					this.prize(),
+					this.getWriteData()
+				},
+				methods: {
+					toIndex: function() {
+						router.push("/index")
+					},
+					prize: function() {
+						w_loading.show();
+						var _this = this;
+						$.get("/activity/propaganda/prizes", {
+							act_id: 38,
+						}, function(res) {
+							w_loading.hide();
+							if(res.errcode == "0000") {
+								_this.prizeItems = res.awards;
+								if(res.awards && res.awards.length > 0) {
+									_this.active1 = true;
+								} else if(res.awards && res.awards.length == 0) {
+									_this.active2 = true;
+									console.log(_this.active2)
+								}
+							}
+
+						})
+					},
+					//					获取填写过的资料
+					getWriteData: function() {
+						var _this = this;
+						$.get("/activity/contact/show", {
+							actid: 38
+						}, function(res) {
+							if(res.errcode == "0000") {
+								if(res.contact != null) {
+									if(res.contact.realname){
+										_this.infoname=res.contact.realname
+									}
+									if(res.contact.mobile){
+										_this.infophone=res.contact.mobile
+									}
+								}
+							}
+						})
+					},
+				}
+			});
+		</script>
+		<template id="music">
+			<!--音乐图标-->
+			<div>
+				<div class="index_music" v-show="loaded" :class="{active_music:isActive}" @tap="toggle"></div>
+				<audio @canplay="canplay"
+                       :src="src"
+                       :loop="loop? 'loop': 'false'"
+                       :autoplay="autoplay? 'autoplay': 'false'">
+                </audio>
+			</div>
+		</template>
+		<script>
+			music = Vue.component("music", {
+				template: "#music",
+				data: function() {
+					return {
+						isActive: false,
+						loaded: false,
+						src: "music/bici300k.mp3",
+						autoplay: false,
+						preload: "auto",
+						controls: false,
+						loop: "loop",
+						audio: null,
+					}
+				},
+				mounted: function() {
+					this.audio = $(this.$el).find("audio")[0];
+					this.audio.load();
+					var _this = this;
+					document.addEventListener("WeixinJSBridgeReady", function() {
+						_this.play();
+					}, false);
+
+				},
+				methods: {
+					isSafari: function() {
+						var safari = /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent);
+						return safari;
+					},
+					canplay: function(evt) {
+						if(!this.loaded) {
+							this.loaded = true;
+						}
+						if(this.autoplay && this.isSafari()) {
+							//                            this.play();
+						}
+					},
+					toggle: function() {
+						var _this = this;
+						_this.isActive = !_this.isActive;
+						if(_this.isActive == true) {
+							this.play();
+						} else if(_this.isActive == false) {
+							this.pause();
+						}
+					},
+					play: function(evt) {
+						if(!this.loaded) {
+							this.audio.load();
+							this.audio.play();
+						} else {
+							this.audio.play();
+						}
+						this.isActive = true;
+					},
+					pause: function(evt) {
+						if(!this.audio.paused) {
+							this.audio.pause();
+						}
+						this.isActive = false;
+					},
+					ended: function() {
+
+					},
+					isPaused: function() {
+						if(!this.loaded) {
+							return true;
+						}
+						return this.audio.paused;
+					},
+				}
+			});
+		</script>
+		<!--正在加载弹框-->
+		<template id="loading">
+			<div id="load" v-if="active">
+				<div class="pic">
+					<img src="image/loading.gif" />
+				</div>
+				<div class="text">正在加载中...</div>
+			</div>
+		</template>
+		<script type="text/javascript">
+			var loading = Vue.component("loading", {
+				template: "#loading",
+				data: function() {
+					return {
+						active: false,
+					}
+				},
+				methods: {
+					show: function() {
+						var _this = this;
+						_this.active = true;
+					},
+					hide: function() {
+						var _this = this;
+						_this.active = false;
+					}
+
+				}
+			});
+			w_loading = new loading();
+			w_loading.$mount("#loadPop");
+		</script>
+		<!--写vue方法-->
+		<!--===========================================================-->
+		<!--路由-->
+		<script>
+			var routes = [{
+				path: "/index",
+				name: "index",
+				component: indexPage,
+			}, {
+				path: "/myrecord",
+				name: "myrecord",
+				component: recordPage,
+			}, {
+				path: "/myPrize",
+				name: 'myPrize',
+				component: myPrize
+			}, {
+				path: "/writeInfo",
+				name: 'writeInfo',
+				component: writeInfo
+			}, {
+				path: "/rotate",
+				name: "rotate",
+				component: rotate
+			}, {
+				path: "/rankList",
+				name: 'rankList',
+				component: rankList
+			}, {
+				//重定向一定要放到最后
+				path: "*",
+				redirect: "/index",
+			}];
+			var router = new VueRouter({
+				routes: routes
+			});
+			var app = new Vue({
+				router: router,
+				data: function() {
+					return {
+						_active: '',
+						activity: null,
+						attendee: null,
+						user: null,
+					};
+				},
+				methods: {
+					incrementUserCount: function() {
+						this.attendee.user_cnt++;
+					},
+					incrementStockCount: function() {
+						this.attendee.stock_cnt++;
+					},
+					decrementUserCount: function() {
+						this.attendee.user_cnt--;
+					},
+					decrementStockCount: function() {
+						this.attendee.stock_cnt--;
+					},
+					updateAttributes: function(attendee, subscribe) {
+						this.attendee = attendee;
+					}
+				},
+				beforeMount: function() {
+					var _this = this;
+					//活动详情
+					$.get("/activity/propaganda/index", { act_id: 38 }, function(res) {
+						console.log(res);
+						if(res.errcode == "0000" && res.activity) {
+							_this.activity = res.activity;
+						}
+					});
+					//参与记录
+					if(!_this.attendee) {
+						w_loading.show();
+						$.get("/activity/propaganda/attend", { act_id: 38 }, function(res) {
+							w_loading.hide();
+							console.log(res);
+							if(res.errcode == "0000" && res.attendee) {
+								_this.attendee = res.attendee;
+								_this.subscribe = res.subscribe;
+							} else {
+								layer(res.errmsg);
+							}
+						})
+					}
+				}
+			}).$mount("#app");
+		</script>
+		<script>
+			$(function() {
+				$.get("/wechat/jsconfig", {}, function(res) {
+					if(res && res.appId) {
+						wx.config(res);
+					}
+				});
+				wxshare = {
+					"share": {
+						"title": "魅力新桂园，工會送安全",
+						"desc": " 桂园人行动起来！年底的旅行就靠他了。",
+						"link": window.location.protocol + "//" + window.location.host + "/html/charmGuanyuan/index.html",
+						"imgUrl": window.location.protocol + "//" + window.location.host + "/html/charmGuanyuan/image/share.jpg",
+						"type": "link",
+						"dataUrl": ""
+					},
+					"timeline": {
+						"title": "魅力新桂园，工會送安全",
+						"link": window.location.protocol + "//" + window.location.host + "/html/charmGuanyuan/index.html",
+						"imgUrl": window.location.protocol + "//" + window.location.host + "/html/charmGuanyuan/image/share.jpg"
+					},
+					"callback": {
+						"url": "/activity/share/clbk",
+						"parm": {
+							"_token": SC._token,
+							"actid": 38
+						},
+						"redirect": null
+					}
+				};
+
+				function sharecallback(event) {
+					//$.ajaxSettings.context = this
+					wxshare.callback.parm.event = event.errMsg;
+					console.log(wxshare.callback.parm);
+					$.post(wxshare.callback.url, wxshare.callback.parm, function(resp) {
+						if(resp && wxshare.callback.redirect) {
+							window.location.href = wxshare.callback.redirect;
+						}
+						if(resp && resp.errcode == "0000") {
+							layer.load(2);
+							$.get("/activity/propaganda/attend", { act_id: 38 }, function(res) {
+								layer.closeAll("loading");
+								if(res.errcode == "0000" && res.attendee) {
+									app.updateAttributes(res.attendee, res.subscribe);
+								} else {
+									layer.msg(res.errmsg);
+								}
+							})
+						}
+					});
+				}
+				wx.ready(function() {
+					wxshare.share.complete = sharecallback;
+					wxshare.timeline.complete = sharecallback;
+					wx.onMenuShareAppMessage(wxshare.share);
+					wx.onMenuShareQQ(wxshare.share);
+					wx.onMenuShareTimeline(wxshare.timeline);
+					wx.onMenuShareWeibo(wxshare.share);
+					wx.onMenuShareQZone(wxshare.share);
+				});
+			});
+		</script>
+	</body>
+</html>
