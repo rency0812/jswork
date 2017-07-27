@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<input type="checkbox" value='芒果'/>芒果
+		<input type="checkbox" value='香蕉'/>香蕉
+		<input type="checkbox" value='西瓜'/>西瓜
+		<input type="checkbox" value='橘子'/>橘子
+		<input type="checkbox"  value='桃子'/>桃子
+
+		<script type="text/javascript">
+			var input = document.querySelectorAll('input');
+			for( var i=0;i<input.length;i++ ){
+				input[i].onclick = function(){
+					if( this.checked ){  // 选中
+						window.localStorage.setItem('sel',this.value);
+					}else{  // 没有选中
+						window.localStorage.setItem('onsel',this.value);
+					}
+				}
+			}
+			window.addEventListener('storage',function(e){
+				if(e.key == 'sel'){
+					for(var i=0;i<input.length;i++ ){
+						if( e.newValue == input[i].value ){
+							input[i].checked = true;
+						}
+					}
+				}else if( e.key == 'onsel' ){
+					for(var i=0;i<input.length;i++ ){
+						if( e.newValue == input[i].value ){
+							input[i].checked = false;
+						}
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

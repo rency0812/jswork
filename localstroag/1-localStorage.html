@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style type="text/css">
+			*{
+				margin:0;
+			}
+			#box{
+				width:100px;
+				height:100px;
+				margin:0 auto;
+				box-shadow:0 0 5px #000;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" id='user'/>
+		<input type="button" id='login' value='登录'/>
+		<input type="button" id='remove' value='删除'/>
+		<div id='con'></div>
+		<script type="text/javascript">
+			
+			if( window.localStorage.getItem('user') ){
+				document.body.innerHTML += window.localStorage.getItem('box');
+				user.value = window.localStorage.getItem('user');
+				//alert('登录成功');
+				setTimeout(function(){
+					
+				},30);
+			}
+
+			login.onclick = function(){
+				//alert(user.value)
+				//console.log(window.localStorage);
+				if(user.value){
+					window.localStorage.setItem('user',user.value);
+					window.localStorage.setItem('box','<div id="box">下次自动登录</div>');
+				}
+			};
+			
+			remove.onclick = function(){
+				window.localStorage.clear();
+			};
+			
+
+		</script>
+	</body>
+</html>

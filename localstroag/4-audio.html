@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			ul{
+				width:600px;
+				height:35px;
+				display:flex;
+				box-shadow:0 0 5px #000;
+				margin:100px auto;
+				list-style:none;
+			}
+			li{
+				flex:1;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<audio id='Audio'></audio>
+		<script type="text/javascript">
+			var aLi = document.querySelectorAll('li');
+			var oAudio = document.querySelector('#Audio');
+			function randomColor(){
+				var r = Math.floor(Math.random()*256);
+				var g = Math.floor(Math.random()*256);
+				var b = Math.floor(Math.random()*256);
+				var a = Math.random();
+				return 'rgba('+r+','+g+','+b+','+a+')'
+			}
+			
+			
+			for( var i=0;i<aLi.length;i++ ){
+				aLi[i].index = i;
+				aLi[i].style.backgroundColor = randomColor();
+				aLi[i].onmouseover = function(){
+					oAudio.src = 'mp3/'+(this.index+1)+'.mp3';
+					aLi[this.index].style.backgroundColor = randomColor();
+					
+					oAudio.play();
+				};
+			}
+		</script>
+	</body>
+</html>
