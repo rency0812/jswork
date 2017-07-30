@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TZ-追梦</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<script>
+    // 竖屏 0 横屏 90 -90
+    //alert(window.orientation);
+
+    var width = (window.orientation ==90 || window.orientation == -90)?window.screen.height:window.screen.width;
+
+    window.addEventListener('orientationchange',function (e) {
+        alert(window.orientation)
+    })
+</script>
+</body>
+</html>

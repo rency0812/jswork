@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TZ-追梦</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: url("img/bg.jpg");
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.onmousedown = function (e) {
+            var e = e || event;
+            var x = e.clientX;
+            var y = e.clientY;
+            var box = document.createElement('div');
+            box.style.cssText = 'position:absolute;left:'+x+'px;top:'+y+'px;border:1px dotted black';
+
+            document.onmousemove = function (e) {
+                var e = e || event;
+                var x1 = e.clientX;
+                var y1 = e.clientY;
+
+                var w = x<x1?x1-x:x-x1;
+                var h = y<y1?y1-y:y-y1;
+
+                var l = x1>x?x:x-w;
+                var t = y1>y?y:y-h;
+
+                box.style.cssText = 'position:absolute;width:'+w+'px;height:'+h+'px;left:'+l+'px;top:'+t+'px;border:1px dotted black';
+                document.body.appendChild(box);
+            }
+            document.onmouseup = function () {
+                document.onmousemove = document.onmouseup = null;
+                var random = Math.floor(Math.random()*20);
+                box.style.border = 0;
+                box.style.background = 'url(img/'+random+'.jpg) no-repeat center center/100% 100%';
+
+            };
+            return false;
+        }
+    </script>
+</body>
+</html>

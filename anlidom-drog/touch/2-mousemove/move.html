@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TZ-追梦</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .jd{
+            width:1011px;
+            height: 144px;
+
+            margin: auto;
+            background: url("img/jd.png");
+        }
+        .ad{
+            height: 800px;
+            position: relative;
+        }
+        .ad .title{
+
+            height: 122px;
+            background: url("img/nav.png") no-repeat center/100% 100%;
+        }
+        .ad .con{
+            height: 915px;
+            background: url("img/bg.jpg");
+            margin-top: -50px;
+            position: relative;
+        }
+        .ad .con div{
+            position: absolute;
+        }
+        .font{
+            top:20px;
+            width: 621px;
+            height:202px;
+            background: url("img/font.png");
+
+        }
+        .person{
+            top:50px;
+            width: 900px;
+            height: 800px;
+            background: url("img/person.png");
+
+        }
+        .spring{
+            top:300px;
+            width: 934px;
+            height: 536px;
+            background: url("img/spring.png");
+        }
+
+    </style>
+</head>
+<body>
+    <section class="jd"></section>
+    <section class="ad">
+        <div class="title"></div>
+        <div class="con">
+            <div class="font"></div>
+            <div class="person"></div>
+            <div class="spring"></div>
+        </div>
+    </section>
+    <script>
+        var oAd = document.querySelector('.ad');
+        var oCon = oAd.querySelector('.con');
+        var aDiv = oCon.querySelectorAll('div');
+        var oFont = oAd.querySelector('.font');
+        var oPerson = oAd.querySelector('.person');
+        var oSpring = oAd.querySelector('.spring');
+
+        var arr = [];
+        var arr1 = [0.005,0.01,0.003];
+        for(var i=0;i<aDiv.length;i++){
+            arr.push((oAd.offsetWidth - aDiv[i].offsetWidth)/2);
+            aDiv[i].style.left = arr[i]+'px';
+        }
+        oAd.onmousemove = function (e) {
+            var e = e || event;
+            for(var i=0;i<aDiv.length;i++){
+                aDiv[i].style.left = e.clientX*arr1[i]+arr[i]+'px';
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
