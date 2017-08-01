@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="Author" content="Fly">
+        <style type='text/css'>
+			*{ margin:0; padding:0; font-family:Microsoft yahei,serif;}
+            
+		</style>
+    </head>
+    <body>
+        <div></div>
+        <script>
+
+            /*
+            * 包装对象
+            *   每个基础数据类型都有对应的包装对象
+            *   每当数据在执行 . 操作的时候，都会由包装对象代替执行
+            *   每次代替执行的时候都会产生一个新的包装对象
+            *   在处理完 . 操作之后这个包装对象会消失
+            * */
+
+            var a = 'abc';
+            //a.split();
+            a.number = 10;
+            alert( a.number );
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

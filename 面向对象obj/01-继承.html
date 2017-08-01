@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="Author" content="Fly">
+        <style type='text/css'>
+			*{ margin:0; padding:0; font-family:Microsoft yahei,serif;}
+            
+		</style>
+    </head>
+    <body>
+        <div></div>
+        <script>
+            /*
+           继承：
+                儿子继承爸爸，儿子拥有爸爸的所有属性和方法
+                儿子的改变不能影响爸爸
+             */
+
+            function Person(name , age) {
+                this.name = name;
+                this.age = age;
+                this.num = 10;
+                this.x = 50;
+            };
+            Person.prototype.showName = function () {
+                alert(this.name);
+            };
+            Person.prototype.showAge =function () {
+                alert(this.age);
+            };
+
+
+            function PerosonNew(name , age , sex) {
+                Person.call(this , name , age); //继承私有属性
+                this.sex = sex; //新增私有属性
+            };
+            PerosonNew.prototype = new Clone( Person.prototype ); //继承公共属性
+            PerosonNew.prototype.constructor = PerosonNew; //修正constructor指向
+            //新增公共属性
+            PerosonNew.prototype.sayHello = function () {
+                alert( 'Hello！' );
+            };
+
+//            var obj = new PerosonNew('阿飞' , 18 , '男');
+//            obj.showName();
+//            obj.sayHello();
+
+            var p1 = new Person('阿飞' , 18 , '男');
+            p1.sayHello();
+
+            function Clone( obj ) {
+                for(var i in obj)this[i]=typeof obj[i]==='object'?new Clone(obj[i]):obj[i]
+            }
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

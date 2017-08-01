@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="Author" content="Fly">
+        <style type='text/css'>
+			*{ margin:0; padding:0; font-family:Microsoft yahei,serif;}
+            
+		</style>
+    </head>
+    <body>
+        <div></div>
+        <script>
+
+            /*
+            * 原型默认自带 ：constructor属性，值就是构造函数
+            * */
+
+            var obj1 = new Person('阿飞');
+            var obj2 = new Person('微笑君');
+            var obj3 = new Person('lxy');
+            var obj4 = new Person('张磊');
+
+
+            function Person(name) {
+                this.name = name;
+            };
+            /*
+            Person.prototype.showName = function () {
+                alert( this.name );
+            };
+            Person.prototype.guoji = 'China';
+            Person.prototype.rz = '黄种人';
+            */
+            //console.log( Person.prototype.constructor === Person );
+            console.log( Person.prototype );
+            /*
+            Person.prototype = {
+                showName : function () {
+                    alert( this.name );
+                },
+                guoji : 'China',
+                rz : '黄种人'
+            };
+            */
+
+
+
+
+
+            /*
+            var a = {
+                name : '阿飞',
+                age : 18
+            };
+
+            a = {
+                sex : '男',
+                marry : true
+            };
+
+            a.sex = '男';
+            a.marry = true;
+            */
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

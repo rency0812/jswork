@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html onselectstart="return false">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="Author" content="Fly">
+        <style type='text/css'>
+			*{ margin:0; padding:0; font-family:Microsoft yahei,serif;}
+            #banner,#banner2{
+                width: 600px;
+                height: 347px;
+                margin: 50px auto;
+                position: relative;
+            }
+            #banner .pic,#banner2 .pic{
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+            #banner .pic ul li,#banner2 .pic ul li{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                list-style: none;
+                display: none;
+            }
+            #banner .pic ul li img,#banner2 .pic ul li img{
+                display: block;
+                width: 100%;
+            }
+            #banner .btn div,#banner2 .btn div{
+                width: 30px;
+                height: 60px;
+                background: rgba(0,0,0,.5);
+                color: #fff;
+                text-align: center;
+                line-height: 60px;
+                font-weight: bold;
+                font-size: 14px;
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                margin-top: -30px;
+            }
+            #banner .btn div.left,#banner2 .btn div.left{
+                left: 0;
+            }
+            #banner .btn div.right,#banner2 .btn div.right{
+                right: 0;
+            }
+            #banner .tab,#banner2 .tab{
+                width: 91px;
+                height: 12px;
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                margin-left: -45px;
+            }
+            #banner2 .tab{
+                width: 73px;
+                margin-left: -36px;
+            }
+            #banner .tab li,#banner2 .tab li{
+                width: 12px;
+                height: 12px;
+                border-radius: 100%;
+                float: left;
+                margin: 0 3px;
+                cursor: pointer;
+                background: rgba(255,255,255,.8);
+                list-style: none;
+            }
+            #banner .tab li.on,#banner2 .tab li.on{
+                background: #f60;
+            }
+		</style>
+    </head>
+    <body>
+        <div id="banner">
+            <div class="pic">
+                <ul>
+                    <li><img src="img/1.jpg" alt=""></li>
+                    <li><img src="img/2.jpg" alt=""></li>
+                    <li><img src="img/3.jpg" alt=""></li>
+                    <li><img src="img/4.jpg" alt=""></li>
+                    <li><img src="img/5.jpg" alt=""></li>
+                </ul>
+            </div>
+            <div class="btn">
+                <div class="left"> < </div>
+                <div class="right"> > </div>
+            </div>
+            <div class="tab">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="banner2">
+            <div class="pic">
+                <ul>
+                    <li><img src="img/1.jpg" alt=""></li>
+                    <li><img src="img/2.jpg" alt=""></li>
+                    <li><img src="img/3.jpg" alt=""></li>
+                    <li><img src="img/4.jpg" alt=""></li>
+                </ul>
+            </div>
+            <div class="btn">
+                <div class="left"> < </div>
+                <div class="right"> > </div>
+            </div>
+            <div class="tab">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <script>
+
+            function Banner($li , $btn , $tab) {
+                this.$li = document.querySelectorAll($li);
+                this.$btn = document.querySelectorAll($btn);
+                this.$tab = document.querySelectorAll($tab);
+                this.length = this.$li.length;
+                this.index = 0;
+                this.init();
+                this.btnClick();
+                this.tabClick();
+            };
+            Banner.prototype.init = function () {
+                this.$li[0].style.display = 'block';
+                this.$tab[0].className = 'on';
+            };
+            Banner.prototype.btnClick = function () {
+                for (var i=0;i<2;i++){
+                    (function (i) {
+                        this.$btn[i].onclick = function () {
+                            this.change(function () {
+                                if(i){
+                                    this.index++;
+                                    this.index %= this.length;
+                                }else{
+                                    this.index --;
+                                    if(this.index<0)this.index=this.length-1;
+                                }
+                            });
+                        }.bind(this);
+                    }).call(this,i);
+                }
+            };
+            Banner.prototype.tabClick = function () {
+                for (var i=0;i<this.length;i++){
+                    (function (i) {
+                        this.$tab[i].onclick = function () {
+                            this.change(function () {
+                                this.index = i;
+                            });
+                        }.bind(this);
+                    }).call(this , i);
+                }
+            };
+            Banner.prototype.change = function (fn) {
+                this.$li[this.index].style.display = 'none';
+                this.$tab[this.index].className = '';
+                fn && fn.call(this);
+                this.$li[this.index].style.display = 'block';
+                this.$tab[this.index].className = 'on';
+            };
+
+            var b1 = new Banner('#banner .pic li' , '#banner .btn div' , '#banner .tab li');
+            var b2 = new Banner('#banner2 .pic li' , '#banner2 .btn div', '#banner2 .tab li');
+
+            /*
+            var oBanner = document.getElementById('banner');
+            var aPicLi = oBanner.querySelectorAll('.pic li');
+            var aBtn = oBanner.querySelectorAll('.btn div');
+            var index = 0;
+            var length = aPicLi.length;
+
+            aPicLi[0].style.display = 'block';
+
+            for (var i=0;i<aBtn.length;i++){
+                (function (i) {
+                    aBtn[i].onclick = function () {
+
+                        aPicLi[index].style.display = 'none';
+
+                        if (i){
+                            index ++;
+                            index %= length;
+                        }else{
+                            index --;
+                            if(index<0)index=length-1;
+                        }
+
+                        aPicLi[index].style.display = 'block';
+                    }
+                })(i)
+            }
+            */
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

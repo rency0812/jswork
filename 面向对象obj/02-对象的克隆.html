@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="Author" content="Fly">
+        <style type='text/css'>
+			*{ margin:0; padding:0; font-family:Microsoft yahei,serif;}
+            
+		</style>
+    </head>
+    <body>
+        <div></div>
+        <script>
+            /*
+
+               对象的克隆
+                b 拥有a的所有属性/方法
+                b 的改变 不能 引起a的改变
+             */
+            var a = {
+                x : 10,
+                y : 20,
+                z : {
+                    a : 5,
+                    b : 6,
+                    c : {
+                        g : {
+                            aa : 10
+                        }
+                    }
+                }
+            };
+
+            var b = new Clone(a);
+            b.z.c.g.aa = 20;
+            b.z.d = 50;
+
+
+            console.log( b );
+            console.log( a );
+
+            function Clone( obj ) {
+                for(var i in obj)this[i]=typeof obj[i]==='object'?new Clone(obj[i]):obj[i]
+            }
+
+            /*
+            function goudan( obj ) {
+                var newObj = {};
+
+                for(var i in obj){
+                    if (typeof obj[i] === 'object'){
+                        newObj[i] = goudan(obj[i]);
+                    }else{
+                        newObj[i] = obj[i];
+                    }
+                }
+
+                return newObj;
+            }
+
+
+             for (var i in a ){
+             b[i] = a[i];
+             };
+             b.z.c = 10;
+
+             var b = a;
+             b.w = 5;
+             alert( a.w );
+             */
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

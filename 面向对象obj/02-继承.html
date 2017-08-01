@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="Author" content="Fly">
+    <style type='text/css'>
+        *{ margin:0; padding:0; font-family:Microsoft yahei,serif;}
+
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+
+    function Person(name , age) {
+        this.name = name;
+        this.age = age;
+        this.num = 10;
+        this.x = 50;
+    };
+    Person.prototype.showName = function () {
+        alert(this.name);
+    };
+    Person.prototype.showAge =function () {
+        alert(this.age);
+    };
+
+    function PerosonNew(name , age , sex) {
+        Person.call(this , name , age);
+        this.sex = sex;
+    };
+
+    function Fn(){};
+    Fn.prototype = Person.prototype;
+    PerosonNew.prototype = new Fn();
+
+    PerosonNew.prototype.constructor = PerosonNew;
+    PerosonNew.prototype.sayHello = function () {
+        alert( 'Hello！' );
+    };
+
+
+    var p1 = new Person('阿飞' , 18 , '男');
+    p1.sayHello();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

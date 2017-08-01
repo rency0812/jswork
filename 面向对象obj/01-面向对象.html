@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="Author" content="Fly">
+        <style type='text/css'>
+			*{ margin:0; padding:0; font-family:Microsoft yahei,serif;}
+            
+		</style>
+    </head>
+    <body>
+        <div></div>
+        <script>
+            /*
+            面向对象编程：以对象为核心去写程序就叫面向对象
+            面向过程编程：
+
+            对象
+            window document
+            new Image()  new Date()  new XMLHttpRequest() new Array()
+
+            探讨创造自定义的对象
+
+            面向对象不一定比面向过程好
+
+            特征：
+                1.封装：方法/属性都是对象私有的，只能通过对象去调用
+                2.继承：对象的复用，在不改变原来的基础上继承出新的对象，可以保留原本的功能添加新的功能
+                3.多态：
+
+             对象的构成： 属性 / 方法
+             */
+
+            /*
+            var obj1 = {};
+            obj1.name = '阿飞';
+            obj1.showName = function () {
+                alert(this.name);
+            };
+
+            var obj2 = {};
+            obj2.name = '微笑君';
+            obj2.showName = function () {
+                alert(this.name);
+            };
+
+            var obj3 = {};
+            obj3.name = 'lxy';
+            obj3.showName = function () {
+                alert( this.name );
+            };
+
+            var obj4 = {};
+            obj4.name = '张磊';
+            obj4.showName = function () {
+                alert( this.name );
+            };
+            */
+            //obj1.showName();
+
+            var obj1 = person('阿飞');
+            var obj2 = person('微笑君');
+            var obj3 = person('lxy');
+            var obj4 = person('张磊');
+
+            function person( name ) {
+                var a = {};
+                a.name = name;
+                a.showName = function () {
+                    alert( this.name );
+                };
+                return a;
+            }
+
+            obj3.showName();
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="Author" content="Fly">
+        <style type='text/css'>
+			*{ margin:0; padding:0; font-family:Microsoft yahei,serif;}
+            
+		</style>
+    </head>
+    <body>
+        <div></div>
+        <script>
+            /*
+            原型链：__proto__
+             */
+            function Fn() {
+                this.yy = 10;
+            };
+            Fn.prototype.yy = 20;
+
+            var p1 = new Fn();
+
+            //console.log( p1.__proto__ == Fn.prototype );
+            console.log( p1 );
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
