@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        .box{
+            width: 50px;
+            height: 50px;
+            background: pink;
+            margin: 5px;
+        }
+        .box.click{
+            background: #4dff9b;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <script>
+
+        /*
+        函数.call();
+        函数.apply();
+         */
+
+        var aBox = document.querySelectorAll(".box");
+//        for (var i = 0; i < aBox.length; i++) {
+//            aBox[i].index = i;
+//            aBox[i].onclick = function () {
+//                console.log("其他内容");
+//                //change();
+//                change.call( this );
+//            };
+//        }
+//
+//        function change() {
+//            console.log(this);
+//            this.innerHTML = this.index;
+//            this.className = "box click";
+//        }
+
+
+//        for (var i = 0; i < aBox.length; i++) {
+//            aBox[i].index = i;
+//            aBox[i].onclick = function () {
+//                console.log("其他内容");
+//                change(this);
+//            };
+//        }
+//
+//        function change(This) {
+//            console.log(This);
+//            This.innerHTML = This.index;
+//            This.className = "box click";
+//        }
+
+
+//        goudan.call(aBox , 30,40);//改变当前这一次的this指向
+//        goudan( 50,60 );
+//        function goudan( x,y ) {
+//            console.log(this);
+//            console.log(x+y);
+//        }
+
+        goudan.apply(aBox , [50,40]);//改变当前这一次的this指向
+        goudan( 50,70 );
+        function goudan( x,y ) {
+            console.log(this);
+            console.log(x+y);
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
