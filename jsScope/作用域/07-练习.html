@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+
+        var a = 10;
+        var b = 15;
+        Fn();
+        a = 20;
+        function Fn(){
+            var a = 5;
+            b = 20;
+            alert( a );
+            alert( b );
+        }
+        alert( a );
+        alert( b );
+
+        /*
+         1.
+             var a
+             var b
+             function Fn(){
+                 var a = 5;
+                 b = 20;
+                 alert( a );
+                 alert( b );
+             }
+         2.
+             a = 10;
+             b = 15;
+             Fn();     ====>   1.
+                                 var a
+                               2.
+                                 a = 5;
+             b = 20;
+                                 alert( a ); // 5
+                                 alert( b ); // 20
+             a = 20;
+             alert( a ); //20
+             alert( b ); //20
+         */
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

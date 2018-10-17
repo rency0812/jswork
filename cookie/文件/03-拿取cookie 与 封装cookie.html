@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            *{ margin:0; padding:0; font-family:"Microsoft yahei",serif;}
+            li{ list-style-type: none;}
+             
+        </style>
+    </head>
+    <body>
+        <div id="box"></div>
+        <script>
+        // var data = new Date(2017,4,9,1,0,0);
+        // var d = "expires="+data.toGMTString();
+        // document.cookie = "name=阿飞;"+d;
+        // document.cookie = "age=18;"+d;
+
+            //alert( document.cookie );
+
+            //alert( getCookie("age") );
+            //var a = 0;
+
+        //var user = input.value;
+
+//            setCookie({
+//                name : "阿飞",
+//                age : 20,
+//                sex : "男",
+//                user : "goudan123",
+//                pwd : "123456"
+//            },7);
+
+        //removeCookie("name");
+
+        alert( getCookie("user") );
+
+            //获取cookie
+            function getCookie( key ) {
+                var val = document.cookie.match(new RegExp("\\b"+key+"=([^;]*)(;|$)"));
+                return val?val[1]:"";
+            }
+
+            //设置cookie
+            function setCookie(mJson , time) {
+                var data = new Date( new Date().getTime() + time*24*60*60*1000 ).toGMTString();
+                for (var key in mJson) document.cookie = key+"="+mJson[key]+"; expires="+data;
+            }
+
+            //清楚cookie
+            function removeCookie( key ) {
+                var json = {};json[key] = "";
+                setCookie(json,-1);
+            }
+
+//            //   \bname\b=([^;]*)[;$]
+//            function getCookie( key ) {
+//               var r = new RegExp("\\b"+key+"=([^;]*)(;|$)");
+//               var val = document.cookie.match(r);
+//               console.log( val );
+//               if (val){
+//                   return val[1];
+//               }else{
+//                   return "";
+//               }
+//            }
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

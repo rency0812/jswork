@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        /*
+            javascript的回收机制：
+
+            闭包：
+                条件1：函数里面嵌套了一个函数
+                条件2：内部函数引用了外部函数的参数或者变量
+
+                特点：被引用的 参数/变量 不会被垃圾回收机制回收
+         */
+
+//        Fn();
+//        function Fn() {
+//            var a = 10;
+//            alert( a + 20 );
+//        }
+
+        function Fn() {
+
+            var a = 10;
+
+            function A() {
+                a ++;
+                alert( a );
+            }
+
+            return A;
+        }
+
+        var x = Fn();
+
+        x();
+        x();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

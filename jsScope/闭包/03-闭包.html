@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box">
+
+        <ul>
+            <li>0000</li>
+            <li>0001</li>
+            <li>0002</li>
+            <li>0003</li>
+        </ul>
+
+    </div>
+    <script>
+
+        var aLi = document.querySelectorAll("ul li");
+        for (var i = 0; i < aLi.length; i++) {
+
+//            Fn(i);
+//            function Fn( xxx ) {
+//                aLi[xxx].onclick = function () {
+//                    alert( xxx );
+//                }
+//            }
+
+            ~function(i){
+                aLi[i].onclick = function () {
+                    alert( i );
+                }
+            }(i);
+
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

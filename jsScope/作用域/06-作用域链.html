@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+
+        /*
+            当作用域用到某个变量，但是自身没有的时候，会往父作用域找，直到window位置
+            假设直到window都没有，那就报错
+
+            只能儿子找父亲，不可能父亲找儿子
+        */
+
+        var a = 10;
+        Fn();
+        a = 20;
+        function Fn(){
+            var b = 20;
+            alert( a );
+            alert( b );
+        }
+        /*
+            1.定义：
+                 var a
+                 function Fn(){
+                     var b = 20;
+                     alert( a );
+                     alert( b );
+                 }
+
+            2.执行：
+                a = 10;
+                Fn();    =====>  1.定义：
+                                    var b
+
+                                 2.执行：
+                                    b = 20;
+                                    alert( a );  //10
+                                    alert( b );  //20
+                a = 20;
+         */
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

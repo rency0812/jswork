@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+
+        /*
+        按照作用域的顺序来读取代码
+            作用域：范围
+                script标签是最大的域
+                每一个函数执行时，都会产生一个新的域
+
+        每一个域里面代码的解析顺序：
+            1.定义：
+                找var，（只会var出变量名，并不会执行后面的 = 号赋值）
+                找function，（函数定义->函数名，会定义整个函数体，并不仅仅是名字）
+            2.执行：
+                从上往下执行代码
+         */
+
+
+
+//        alert( a );
+//
+//        var a = 10;
+//
+//        alert( a );
+            /*
+                1.定义：
+                    var a;
+                2.执行：
+                    alert( a );
+                    a = 10;
+                    alert( a );
+             */
+
+
+
+            Fn();
+
+            function Fn(){
+                alert( "阿飞" );
+            }
+
+
+            /*
+
+                1. function Fn(){
+                     alert( "阿飞" );
+                     }
+                2.
+                    Fn();
+             */
+
+//
+//
+//        Dn();
+//        function Dn() {
+//
+//        }
+
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        #box{
+            width: 200px;
+            height: 150px;
+            padding: 10px;
+            border:5px solid #000;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+
+        /*
+        .clientWidth
+        .clientHeight
+
+        .offsetWidth
+        .offsetHeight
+
+        .scrollWidth
+        .scrollHeight
+            这个值很奇怪…每个浏览器得到的结果有轻微的差别
+         */
+
+        var oBox = document.getElementById("box");
+
+        alert( oBox.clientWidth ); //width+padding
+        alert( oBox.offsetWidth ); //width+padding+border
+        alert( oBox.scrollWidth ); //获取内容占据的宽，不管有没有超出隐藏。当没有超出的时候，和clientWidth值一样
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

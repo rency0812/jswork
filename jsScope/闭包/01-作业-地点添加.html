@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        #box{
+            width: 100%;
+            height: 600px;
+            background: -webkit-linear-gradient(top,#8cc1de,#f9a886);
+            padding-top: 30px;
+        }
+        #box .content{
+            width: 1000px;
+            margin: auto;
+            height: 570px;
+        }
+        #left,#right{
+            float: left;
+            width: 450px;
+            height: 470px;
+            padding: 100px 0 0 50px;
+        }
+        #left{
+            background: #fff;
+        }
+        #right{
+            background: rgba(0,0,0,.5);
+        }
+        #left p span.title{
+            color: #F5A63A;
+        }
+        #left p span.area{
+            font-size: 14px;
+            cursor: pointer;
+        }
+        #left p span.area:hover{
+            color: #F20F70;
+        }
+        #left ul{
+            margin-top: 20px;
+        }
+        #left ul li,#right ul li{
+            float: left;
+            height: 30px;
+            border: 1px solid #999;
+            font-size: 14px;
+            line-height: 30px;
+            text-align: center;
+            padding: 0 5px 0 10px;
+            margin: 5px;
+        }
+        #left ul li b{
+            font-weight: normal;
+            font-style: italic;
+            margin-right: 5px;
+        }
+        #left ul li span{
+            padding: 5px;
+            cursor: pointer;
+        }
+        #right ul li{
+            color: #fff;
+            font-style: italic;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="content">
+            <div id="left">
+                <p>
+                    <span class="title">热门目的地：</span>
+                    <span class="area">马来西亚</span>
+                    <span class="area">泰国</span>
+                    <span class="area">三亚</span>
+                    <span class="area">新西兰</span>
+                    <span class="area">云南</span>
+                </p>
+                <ul>
+                    <!--<li><b>马来西亚</b>|<span>×</span></li>-->
+                </ul>
+            </div>
+            <div id="right">
+                <ul>
+                    <!--<li>马来西亚</li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function () {
+
+            var aArea = document.querySelectorAll("#left p span.area"),
+                oLeftUl = document.querySelector("#left ul"),
+                oRightUl = document.querySelector("#right ul"),
+                length = aArea.length;
+            for (var i = 0; i < length; i++) {
+
+                aArea[i].ifAdd = false; //自定义属性，用来检测是否已经添加过
+
+                aArea[i].onclick = function () {
+                    if ( !this.ifAdd ){
+                        var oLi = document.createElement("li"),
+                            oLi2 = document.createElement("li"),
+                            oSpan = document.createElement("span"),
+                            This = this;
+
+                        oLi.innerHTML = "<b>"+this.innerHTML+"</b>|";
+                        oLi2.innerHTML = this.innerHTML;
+                        oSpan.innerHTML = "×";
+
+                        oSpan.onclick = function () {
+                            oLeftUl.removeChild(oLi);
+                            oRightUl.removeChild(oLi2);
+                            This.ifAdd = false;
+                        };
+
+                        oLi.appendChild(oSpan);
+                        oLeftUl.appendChild(oLi);
+                        oRightUl.appendChild(oLi2);
+                        this.ifAdd = true;
+                    }
+                };
+            }
+
+        })();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

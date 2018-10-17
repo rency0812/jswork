@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+
+
+    <script>
+        var g = 10;
+
+        var x = document.querySelector("#box");
+        x.innerHTML = "阿飞";
+    </script>
+
+    <script>
+        alert( g );
+    </script>
+
+
+
+    <script>
+        var a = 10; //全部变量
+
+        goudan();
+        function goudan() {
+            //var b = 50; //局部变量
+            b = 50;
+        }
+
+        alert( b );
+        /*
+         按照作用域的顺序来读取代码
+             作用域：范围
+                 script标签是最大的域
+                 每一个函数都是一个域
+         */
+        /*
+            script当前域(外面最大的那一层)的所有 var 都相当于定义在 window 对象下：(全局变量)
+
+            所有不经过var生产的变量，都是相当于window对象下的：
+                b = "阿飞";  //   ==>  window.b = "阿飞";
+
+
+            也就是说，假设你需要在script域下var一个变量的话，其实是不用写var的
+         */
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

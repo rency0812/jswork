@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+
+        var a = 10;
+        Fn(a);
+        function Fn(a) {
+            alert(a);
+            a = 20;
+            alert(a);
+        }
+        alert(a);
+
+        //10 20 10
+
+        /*
+        1.
+            var a; //16
+            function Fn(){块};  //18
+        2.
+            a = 10; //16
+            Fn(a); //17    =====>   1.
+                                        var a(形参) = a(实参); //参数18
+                                    2.
+                                        alert(a); //19
+                                        a = 20; //20
+                                        alert(a); //21
+            alert(a);
+
+         */
+
+        /*
+         定义过程也包括：函数的参数
+            形参相当于 var了一个局部变量
+            定义过程中，形参不仅仅只是定义，还会和实参对应的赋值
+         */
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

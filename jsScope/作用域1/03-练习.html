@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+
+        alert( a );
+        var a = 10;
+        alert( a );
+        function a(){ alert(20) };
+        alert( a );
+        var a = 30;
+        alert( a );
+        function a(){ alert(40) };
+        alert( a );
+
+        //函数块40  10  10  30 30
+
+        /*
+        1.
+            X var a; //17
+            X var a; //21
+            X function a(){ alert(20) }; //19
+            √ function a(){ alert(40) }; //23
+        2.
+            alert( a );  //16
+            a=10; //17
+            alert(a); //18
+            alert(a); //20
+            a=30; //21
+            alert(a); //22
+            alert( a ); //24
+         */
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

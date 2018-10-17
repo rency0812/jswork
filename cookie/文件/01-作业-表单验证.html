@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft yahei",serif;
+        }
+        #box{
+            position: relative;
+            width: 420px;
+            height: 520px;
+            margin: 0 auto;
+            background: #0cf;
+        }
+        #box h1{
+            height: 40px;
+            line-height: 40px;
+            color: #fff;
+            text-align: center;
+            font-size: 18px;
+            background: #09c;
+        }
+        #box ul li{
+            overflow: hidden;
+            list-style: none;
+            margin: 10px 0;
+            height: 42px;
+            transition: height .2s;
+        }
+        #box ul li.wrong{
+            height: 63px;
+        }
+        #box ul li input{
+            display: block;
+            width: 270px;
+            height: 40px;
+            margin: 0 auto;
+            outline: none;
+            text-indent: 10px;
+            border: 1px solid #ddd;
+        }
+        #box ul li.wrong input{
+            border: 1px solid #f00;
+        }
+        #box ul li.right input{
+            border: 1px solid #00da00;
+        }
+        #box ul li span{
+            color: red;
+            font-size: 14px;
+        }
+        #submit{
+            display: block;
+            width: 270px;
+            height: 40px;
+            font-size: 18px;
+            background: #0099cc;
+            margin: 0 auto;
+            outline: none;
+            color: #fff;
+            border: none;
+        }
+        #box .tip{
+            position: absolute;
+            left: 50%;
+            top: 40%;
+            margin-left: -50px;
+            margin-top: -20px;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: rgba(0,0,0,.5);
+            color: #fff;
+            font-size: 12px;
+            opacity: 0;
+            transition: 0.2s;
+        }
+        #box .tip.show{
+            opacity: 1;
+            top: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <h1>注册</h1>
+        <ul>
+            <li><input type="text" id="user" placeholder="请输入用户名"><span>输入的用户名格式有误！</span></li>
+            <li><input type="password" id="pwd" placeholder="请输入密码"><span>输入的用户名格式有误！</span></li>
+            <li><input type="password" id="pwd2" placeholder="请再次输入密码"><span>两次输入的密码不一致！</span></li>
+            <li><input type="text" id="tel" placeholder="请输入手机号"><span>输入的用户名格式有误！</span></li>
+            <li><input type="text" id="mail" placeholder="请输入邮箱地址"><span>输入的用户名格式有误！</span></li>
+            <li><input type="text" id="card" placeholder="请输入身份证号"><span>输入的用户名格式有误！</span></li>
+        </ul>
+        <button id="submit">注册</button>
+        <p class="tip">请先输入密码</p>
+    </div>
+</body>
+<script>
+    var aInput = document.querySelectorAll("#box ul li input"),
+        oTip = document.querySelector("#box .tip"),
+        length = aInput.length;
+
+    //正则规则
+    var reg = [
+        /^[a-z_]\w{5,17}$/i,
+        /^[\w!@#$%^&*()+={}\[\]:;"'\\\/\-<>,\.`~]{6,18}$/,
+        "",
+        /^1[3-8]\d{9}$/,
+        /^\w+@[\da-z]{2,}(\.[a-z]{2,}){1,3}$/i,
+        /^[1-9]\d{16}[\dxX]$/
+    ];
+
+    for (var i = 0; i < length; i++) {
+        aInput[i].index = i;
+        if ( i != 2 ){
+            //需要正则检测的input框事件
+            aInput[i].onblur = function () {
+                var val = this.value;
+                if ( val ){
+                    var r = reg[this.index] , cName = "";
+                    if ( r.test( val ) ){
+                        cName = "right";
+                    }else{
+                        cName = "wrong";
+                        this.focus();
+                    }
+                    this.parentNode.className = cName;
+                }else{
+                    this.parentNode.className = "";
+                }
+            };
+        }else{
+            //再次输入密码input框的特殊事件
+            aInput[i].onfocus = function () {
+                if ( !aInput[1].value ){
+                    oTip.className = "tip show";
+                    aInput[1].focus();
+                    setTimeout(function () {
+                        oTip.className = "tip";
+                    },1000);
+                }
+            };
+            aInput[i].onblur = function () {
+                var val = this.value,
+                    val1 = aInput[1].value;
+                if ( val ){
+                    var cName = "";
+                    if ( val === val1 ){
+                        cName = "right";
+                    }else{
+                        cName = "wrong";
+                        aInput[1].focus();
+                    }
+                    this.parentNode.className = cName;
+                }else{
+                    this.parentNode.className = "";
+                }
+            };
+        }
+    }
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
