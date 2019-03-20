@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Author" content="">
+		<title>Document</title>
+		<style type="text/css">
+			
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box1{
+				width:738px;
+				height:430px;
+				box-shadow:0 0 10px #000;
+				margin:50px auto 0;
+				position:relative;
+			}
+			#box2{
+				width:170px;
+				height:260px;
+				box-shadow:0 0 10px #000;
+				margin:20px auto 50px;
+				position:relative;
+			}
+			.pic{
+				width:100%;
+				height:100%;
+			}
+			.pic img{
+				width:100%;
+				height:100%;
+				display:none;
+			}
+			.btn a{
+				position:absolute;
+				top:50%;
+				margin-top:-40px;
+				height:70px;
+				width:70px;
+				color:#fff;
+				text-align:center;
+				line-height:50px;
+				text-decoration:none;
+				font-size:22px;
+			}
+			.prev{
+				left:0px;
+				background:url(images/arrow.png) 0 0;
+			}
+			.prev:hover{
+				background-position:-70px 0;
+			}
+			.next{
+				right:0px;
+				background:url(images/arrow.png) 0 -70px;
+			}
+			.next:hover{
+				
+				background-position:-70px -70px;
+			}
+
+			.tab{
+				position:absolute;
+				bottom:10px;
+				width:100%;
+				text-align:center;
+				line-height:0;
+			}
+			.tab a{
+				width:12px;
+				height:12px;
+				display:inline-block;
+				background:#ff00ff;
+				border-radius:50%;
+			}
+			.tab a.on{
+				background:#ffff00;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box1">
+			<div class="pic">
+				<img src="img/1.jpg" alt=""/>
+				<img src="img/2.jpg" alt="" />
+				<img src="img/3.jpg" alt="" />
+				<img src="img/4.jpg" alt="" />
+				<img src="img/5.jpg" alt="" />
+			</div>
+
+			<div class="btn">
+				<a href="javascript:;" class="prev"></a>
+				<a href="javascript:;" class="next"></a>
+			</div>
+
+			<div class="tab">
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+			</div>
+		</div>
+
+		<div id="box2">
+			<div class="pic">
+				<img src="images/1.jpg" alt=""/>
+				<img src="images/2.jpg" alt="" />
+				<img src="images/3.jpg" alt="" />
+			</div>
+
+			<div class="btn">
+				<a href="javascript:;" class="prev"></a>
+				<a href="javascript:;" class="next"></a>
+			</div>
+
+			<div class="tab">
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			var aImg1 = box1.getElementsByTagName('img');
+			var oBtn1 = box1.getElementsByClassName('btn')[0];
+			var oTab1 = box1.getElementsByClassName('tab')[0];
+			var aA1 = oBtn1.getElementsByTagName('a');
+			var aTabA1 = oTab1.getElementsByTagName('a');
+			
+			var aImg2 = box2.getElementsByTagName('img');
+			var oBtn2 = box2.getElementsByClassName('btn')[0];
+			var oTab2 = box2.getElementsByClassName('tab')[0];
+			var aA2 = oBtn2.getElementsByTagName('a');
+			var aTabA2 = oTab2.getElementsByTagName('a');
+			
+			
+			play( aImg1 , aTabA1 ,aA1 );
+			play( aImg2 , aTabA2 ,aA2 );
+			function play( aImg , aTabA , aA ){
+				var num = 0;
+				aImg[num].style.display = 'block';
+				aTabA[num].className = 'on';
+
+				//点击左右按钮
+				for (var i=0;i<aA.length;i++ )
+				{
+					aA[i].index = i;
+					aA[i].onclick = function(){
+						if ( this.index ){
+							num++;
+							if ( num == aImg.length )num = 0;
+						}else{
+							num--;
+							if ( num < 0 )num = aImg.length-1;
+						};
+						tabOn();
+					};
+				};
+				
+				//点击小圆点
+				for (var i=0;i<aTabA.length;i++ )
+				{
+					aTabA[i].xyz = i;
+					aTabA[i].onclick = function(){
+						num = this.xyz;
+						tabOn();
+					};
+				};
+
+				function tabOn(){
+					for (var i=0;i<aTabA.length;i++ ){
+						aTabA[i].className = '';
+						aImg[i].style.display = 'none';
+					}
+					aTabA[num].className = 'on';
+					aImg[num].style.display = 'block';
+				};
+			};
+		</script>
+	</body>
+</html>
