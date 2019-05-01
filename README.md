@@ -23,6 +23,9 @@
 //  .domComplete        current document readiness被设置 complete的时间
 //  .loadEventStart      触发onload事件的时间
 //  .loadEventEnd       onload事件结束的时间
+```
+* 主要性能分析指标
+```
 // DNS查询耗时 = domainLookupEnd - domainLookupStart
 // TCP链接耗时 = connectEnd - connectStart
 // request请求耗时 = responseEnd - responseStart
@@ -30,6 +33,7 @@
 // 白屏时间 = domloadng - fetchStart
 // domready时间 = domContentLoadedEventEnd - fetchStart
 // onload时间 = loadEventEnd - fetchStart
+////////////////////////////////////////
 console.log('首屏图片加载完成 : ',window.lastImgLoadTime - window.performance.timing.navigationStart); //在最后一张图出来的时候打时间点
 console.log('HTML加载完成 : ',window.loadHtmlTime - window.performance.timing.navigationStart);//在HTML后打时间点
 console.log('首屏接口完成加载完成 : ',Report.SPEED.MAINCGI - window.performance.timing.navigationStart);//在首屏的接口打时间点
