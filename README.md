@@ -39,3 +39,25 @@ console.log('HTML加载完成 : ',window.loadHtmlTime - window.performance.timin
 console.log('首屏接口完成加载完成 : ',Report.SPEED.MAINCGI - window.performance.timing.navigationStart);//在首屏的接口打时间点
 console.log('接口完成加载完成 : ',Report.SPEED.LASTCGI - window.performance.timing.navigationStart);//在所有接口打时间点
 ```
+* 请你描述下一个网页是如何渲染出来的，dom树和css树是如何合并的，浏览器的运行机制是什么，什么会造成渲染阻塞?
+```
+1.首先当用户输入一个URL的时候，浏览器就会发送一个请求，请求URL对应的资源,请求成功的话，浏览器会收到一个html文件。
+2.然后浏览器的HTML解析器会对这个文件自上而下开始解析，尝试去构建一棵完整的Dom树。
+3.在构建DOM树的时候，当遇到JS元素时，HTML解析器就会将控制权转让给JS解析器，浏览器会开启JavaScript引擎线程，该线程会阻断HTML解析器的 进程，相当于与此同时，没有其他资源会被继续加载与解析，dom树的构建与渲染都会被阻塞；当遇到css元素时，HTML解析器就换将控制权转让给css解 析器，浏览器会开启一个异步请求线程，在该线程上，浏览器会去请求相应的css文件，并且根据该文件去构建cssDom树(也叫css rule)，该线程会阻塞 JavaScript引擎线程（即css后面的js模块的解析会在css解析完毕后执行），但是不会阻塞dom树的构建。具体案例可以参考
+`https://www.cnblogs.com/chenjg/p/7126822.html（async，defer这两个属性说白了就是用来控制js的执行开始时间的）`
+4.DOM树构建完之后，浏览器把DOM树中的一些不可视元素去掉，然后与CSSOM合成一棵render树。
+5.接着浏览器根据这棵render树，计算出各个节点(元素)在屏幕的位置。这个过程叫做layout，输出的是一棵layout树。
+7.最后浏览器根据这棵layout树，将页面渲染到屏幕上去。
+--------------------- 
+`具体详细参考：https://blog.csdn.net/lxsjh/article/details/79158820`
+
+```
+
+
+
+
+
+
+
+
+
