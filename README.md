@@ -49,8 +49,27 @@ console.log('接口完成加载完成 : ',Report.SPEED.LASTCGI - window.performa
 5.接着浏览器根据这棵render树，计算出各个节点(元素)在屏幕的位置。这个过程叫做layout，输出的是一棵layout树。
 7.最后浏览器根据这棵layout树，将页面渲染到屏幕上去。
 --------------------- 
-`具体详细参考：https://blog.csdn.net/lxsjh/article/details/79158820`
+* `具体详细参考：https://blog.csdn.net/lxsjh/article/details/79158820`
 
+```
+* js是怎样处理事件的eventloop，宏任务源tasks和微任务源jobs分别有哪些
+```
+*JavaScript是单线程的语言(又分为同步任务,异步任务)
+*Event Loop是javascript的执行机制
+> 总体上来讲，setTimeout，setTimeInterval粒度更大，属于宏任务，promise.then中的回调粒度小，是微任务。
+ setTimeout，在0ms后将callback加入到宏任务的queue中，而promise的回调放在微任务的queue中
+ 当前JS线程中的任务执行完成后(正常代码都会放入执行栈中，执行栈中空闲后)，queue中的函数会按队列执行。先去微任务的queue，再去执行宏任务队列中的callback。
+
+* 宏任务有
+> I/O	
+  setTimeout	
+  setInterval	
+  setImmediate	(nodejs)
+  requestAnimationFrame
+* 微任务有
+process.nextTick（nodejs）	
+MutationObserver	
+Promise.then catch finally
 ```
 
 
