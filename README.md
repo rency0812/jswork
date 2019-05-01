@@ -1,7 +1,7 @@
 # jswork
 - 什么是`window.performance.timing?`
 * 性能分析。
-``
+```
 //  .navigationStart 准备加载页面的起始时间
 //  .unloadEventStart 如果前一个文档和当前文档同源,返回前一个文档开始unload的时间
 //  .unloadEventEnd 如果前一个文档和当前文档同源,返回前一个文档开始unload结束的时间
@@ -34,4 +34,4 @@ console.log('首屏图片加载完成 : ',window.lastImgLoadTime - window.perfor
 console.log('HTML加载完成 : ',window.loadHtmlTime - window.performance.timing.navigationStart);//在HTML后打时间点
 console.log('首屏接口完成加载完成 : ',Report.SPEED.MAINCGI - window.performance.timing.navigationStart);//在首屏的接口打时间点
 console.log('接口完成加载完成 : ',Report.SPEED.LASTCGI - window.performance.timing.navigationStart);//在所有接口打时间点
-``
+```
