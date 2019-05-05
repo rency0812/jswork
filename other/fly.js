@@ -1,8 +1,7 @@
 /**
  * Created by Administrator on 2017/2/28.
  * version fly-1.0
- * Author 31期JavaScript全体小伙伴
- *
+ * 
  */
 !function(){
     //$外界接口函数
