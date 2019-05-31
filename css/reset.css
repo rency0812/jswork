@@ -1,0 +1,37 @@
+html, body{
+  height: 100%;
+  overflow-x: hidden;
+}
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+div,p,h1,h2,h3,span{
+  margin: 0;
+  padding: 0;
+}
+a{
+  text-decoration-line: none;
+}
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+input::-ms-clear, input::-ms-reveal{ display:none;}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{
+  color:#989DA8;
+}
+input::-moz-placeholder{
+  color:#989DA8;
+}
+input:-moz-placeholder{
+  color:#989DA8;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder{
+  color:#989DA8;
+}
