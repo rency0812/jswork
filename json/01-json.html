@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        /*
+        键值对
+
+        假设是关系到前后台数据的传输，那么json的属性和值都必须加上双引号
+         */
+        var a = {
+            'name' : "阿飞",
+            age : 18,
+            sex : "男",
+            marry : true,
+            sayHello : function () {
+                alert( "hello！" );
+                console.log(this);
+            }
+        };
+
+        var oBox = document.getElementById("box");
+        oBox.innerHTML = "姓名："+a.name+"，年龄："+a.age+"，性别："+a.sex+"，婚姻状况："+(a.marry?"已婚":"未婚");
+
+        a.sayHello();
+        goudan();
+
+        function goudan() {
+            console.log(this);
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
