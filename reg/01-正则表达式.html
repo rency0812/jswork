@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>please enter your title</title>
+		<meta charset="gbk">
+		<meta name="Author" content="潭州学院-阿飞老师">
+		<style type='text/css'>
+			*{ margin:0; padding:0;}
+
+		</style>
+		
+	</head>
+	<body>
+		
+		<script>
+			/*
+				正则表达式：
+					用于匹配字符串的一套规则
+				
+			*/
+			var str = 'afei520qqq456sdad2589';
+			var r = /\d+/g;
+
+			var arr = str.match( r );
+
+			alert( arr );
+			
+			/*
+			
+			var s = '';
+			var arr = [];
+			for (var i=0;i<str.length;i++ )
+			{
+				if ( isNaN( str.charAt(i) ) )
+				{
+					if ( s.length )
+					{
+						arr.push(s);
+						s = '';
+					}
+				}
+				else
+				{
+					s += str.charAt(i);
+				}
+			}
+			if ( s.length )
+			{
+				arr.push(s);
+			}
+			alert( arr );
+			*/
+			
+
+			//alert( isNaN( '10px' ) ); //Number()
+			
+		</script>
+	</body>
+</html>
+

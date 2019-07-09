@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>please enter your title</title>
+		<meta charset="gbk">
+		<meta name="Author" content="潭州学院-阿飞老师">
+		<style type='text/css'>
+			*{ margin:0; padding:0;}
+
+		</style>
+		
+	</head>
+	<body>
+		<script>
+			/*
+				标识：
+					i 不区分大小写
+					g 全局匹配
+					m 多行匹配
+			*/
+
+			var str = 'AbcraBC';
+			//var reg = /abc/gi;
+			var reg = new RegExp( 'abc' , 'igm' );
+			alert( str.match(reg) );
+		</script>
+	</body>
+</html>
+

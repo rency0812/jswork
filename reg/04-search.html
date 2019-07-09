@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>please enter your title</title>
+		<meta charset="gbk">
+		<meta name="Author" content="潭州学院-阿飞老师">
+		<style type='text/css'>
+			*{ margin:0; padding:0;}
+
+		</style>
+		<script type="text/javascript" src=''></script>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			/*
+				
+				转义：
+					\s \S \w \W \b \B \d \D    \n \t \r
+				量词：
+					{1,5}   {1}  {2,}  + ? *
+				标识：
+					g i m
+				字符集：
+					[0-5] [b-j] [^ab] [a|b{}] 
+				子集：
+					()
+				特殊字符：
+					^ $ .
+				
+				方法：
+					test
+					match
+					replace
+
+					search
+			*/
+			
+			//var str = '12a4546b8498c564f4d848';
+
+			//var arr = str.split( new RegExp('a') );
+			//var str = 'a12a45a78';
+			//var arr = str.match( new RegExp( 'a', 'g') );
+			//alert( arr );
+
+			var str = 'a.b456a.b56acb';
+
+			//var reg = /a\.b/g
+			var x = 'a\\.';
+			var reg = new RegExp( x + 'b' , 'g' ); //     /a\.b/g
+			
+			alert( str.match( reg ) );
+
+
+		</script>
+	</body>
+</html>

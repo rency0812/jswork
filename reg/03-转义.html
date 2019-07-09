@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>please enter your title</title>
+		<meta charset="gbk">
+		<meta name="Author" content="潭州学院-阿飞老师">
+		<style type='text/css'>
+			*{ margin:0; padding:0;}
+
+		</style>
+		
+	</head>
+	<body>
+		<script>
+			
+			/*
+				转义：
+					//var str = "阿\\飞\"fly\"";
+					//var str = '阿\r飞';
+					//alert( str );
+				
+				\s 空格
+				\S 非空格
+				\d 数字
+				\D 非数字
+				\w 字符（字母 数字 _）
+				\W 非字符
+
+				/ \
+			*/
+			
+			//var str = '/';
+			//alert( str );
+
+			//var reg = /\//;
+
+			//var str = '		123';
+			//var reg = /\s/;
+
+			//var str = '阿\n飞_';
+			//var reg = /\n/;
+
+			var str = '"123';
+
+			var reg = /"/;
+
+			alert( reg.test(str) );
+			
+		</script>
+	</body>
+</html>
+

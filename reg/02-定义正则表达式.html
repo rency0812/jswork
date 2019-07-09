@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>please enter your title</title>
+		<meta charset="gbk">
+		<meta name="Author" content="潭州学院-阿飞老师">
+		<style type='text/css'>
+			*{ margin:0; padding:0;}
+
+		</style>
+		
+	</head>
+	<body>
+		<script>
+			
+			/*
+				定义正则表达式：
+					/ /
+					new RegExp()
+				
+
+				test :  正则.test( 字符串 )
+					满足条件返回 true，否则返回 false
+			*/
+
+			var str = 'abcd阿飞';
+
+			var x = '阿飞';
+
+			//var reg = /x/;
+			var reg = new RegExp( x );
+
+			alert( reg.test( str ) );
+
+		</script>
+	</body>
+</html>
+

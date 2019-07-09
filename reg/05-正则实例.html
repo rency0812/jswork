@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>please enter your title</title>
+		<meta charset="gbk">
+		<meta name="Author" content="潭州学院-阿飞老师">
+		<style type='text/css'>
+			*{
+				font-family:'Microsoft yahei';
+			}
+			p{
+				
+				height:40px;
+				margin-bottom:10px;
+			}
+			
+			input{
+				width:250px;
+				height:40px;
+				border:1px solid #bbb;
+				outline:none;
+				text-indent:5px;
+			}
+
+			span.tip{
+				display:inline-block;
+				color:#f00;
+				font-size:12px;
+				line-height:40px;
+				display:none;
+				position:relative;
+			}
+			span.tip b{
+				color:#fff;
+				background:#f00;
+				width:15px;
+				height:15px;
+				border-radius:100%;
+				position:absolute;
+				top:13px;
+				left:0px;
+				line-height:15px;
+				text-align:center;
+			}
+			span.true{
+				display:inline-block;
+				color:#0c0;
+				font-size:12px;
+				line-height:40px;
+				display:none;
+			}
+		</style>
+		<script type="text/javascript" src=''></script>
+	</head>
+	<body>
+		
+		<form action="" id='f'>
+			
+			<p>
+				<input type="text" name='user' placeholder='请输入您的用户名' />
+				<span class='tip'><b>×</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户名由数字、字母、_组成，不能以数字开头，长度为6-18位</span>
+				<span class='true'>输入正确！</span>
+			</p>
+			<p>
+				<input type="password" name='pwd' placeholder='请输入您的密码' />
+				<span class='tip'>密码为6-18位的字符</span>
+				<span class='true'>输入正确！</span>
+			</p>
+			<p>
+				<input type="text" name='qq' placeholder='请输入您的QQ号' />
+			</p>
+			<p>
+				<input type="text" name='tel' placeholder='请输入您的手机号' />
+			</p>
+			<p>
+				<input type="text" name='mail'  placeholder='请输入您的邮箱' />
+			</p>
+			<p>
+				<input type="text" name='IDCard'  placeholder='请输入您的身份证号' />
+			</p>
+
+		</form>
+
+		<script type="text/javascript">
+			
+			var oF = document.getElementById('f');
+
+			var aInp = oF.getElementsByTagName('input');
+
+			for ( var i=0;i<aInp.length;i++ )
+			{
+				aInp[i].onfocus = function(){
+					fn.call(this);
+				};
+				
+			}
+
+			aInp[0].onkeyup = function(){
+				fn.call(this);
+			};
+
+
+			function fn(){
+				var val = this.value;
+				var reg = /^[a-zA-Z_][0-9a-zA-Z_]{5,17}$/;
+				var oTip = this.parentNode.getElementsByClassName('tip')[0];
+				var oTrue = this.parentNode.getElementsByClassName('true')[0];
+				if ( reg.test(val) )
+				{
+					oTip.style.display = 'none';
+					oTrue.style.display = 'inline-block';
+					this.style.borderColor = '#0c0'
+				}
+				else
+				{
+					oTip.style.display = 'inline-block';
+					oTrue.style.display = 'none';
+					this.style.borderColor = '#f00'
+				}
+			};
+
+var reg = {
+	'user' : /^[a-zA-Z_][0-9a-zA-Z_]{5,17}$/,
+	'pwd' : /^\w{6,18}$/,
+	'qq' : /^[1-9]\d{4,9}$/,
+	'tel' : /^1[345678]\d{9}$/,
+	'mail' : /^[1-9a-zA-Z_]+@[0-9a-zA-Z]+(\.[a-zA-Z]+){1,3}$/,
+	'IDCard' : /^[1-9]\d{16}[0-9xX]$/,
+};
+
+		</script>
+	</body>
+</html>

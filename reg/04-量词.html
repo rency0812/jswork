@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>please enter your title</title>
+		<meta charset="gbk">
+		<meta name="Author" content="潭州学院-阿飞老师">
+		<style type='text/css'>
+			*{ margin:0; padding:0;}
+
+		</style>
+		
+	</head>
+	<body>
+		<script>
+			/*
+				量词{}
+					{1,5}  最少1 最多5
+					{2,}  最少2  
+					{2}   只能2
+
+
+					{0,}  *
+					{1,}  +
+					{0,1} ?
+
+
+				match : 字符串.match( 正则 )
+					把匹配成功的放在数组里面并返回，如果没有匹配成功返回null
+			*/
+
+			var str = '阿飞123';
+
+			var reg = /\d+/;
+
+			var a = str.match( reg );
+
+			alert( a );
+
+			//var r = /阿飞2/;
+
+			//var arr = str.match( r );
+
+			//alert( arr );
+		</script>
+	</body>
+</html>
+
