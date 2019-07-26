@@ -826,7 +826,7 @@
             return this;
         }
     };
-    Init.prototype.constructor = Init;
+    Init.prototype.constructor = Init; // 构造函数原型被重写，所以这里需要重新把指针重新指向构造函数；
 
     window.$ = $;
 }();
