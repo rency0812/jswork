@@ -1,4 +1,19 @@
 # jswork
+* http contentType
+```
+1, application/x-www-form-urlencoded;
+>Form Data
+name: 123
+age: 123
+2, multipart/form-data;
+一般用于文件上传；
+3，application/json；
+>Request payLoad
+{
+ name: 123
+ age: 123
+}
+```
 - 什么是`window.performance.timing?`
 * 性能分析。
 ```
