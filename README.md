@@ -73,7 +73,14 @@ console.log('接口完成加载完成 : ',Report.SPEED.LASTCGI - window.performa
 *Event Loop是javascript的执行机制
 > 总体上来讲，setTimeout，setTimeInterval粒度更大，属于宏任务，promise.then中的回调粒度小，是微任务。
  setTimeout，在0ms后将callback加入到宏任务的queue中，而promise的回调放在微任务的queue中
- 当前JS线程中的任务执行完成后(正常代码都会放入执行栈中，执行栈中空闲后)，queue中的函数会按队列执行。先去微任务的queue，再去执行宏任务队列中的callback。
+ 当前JS线程中的任务执行完成后(正常代码都会放入执行栈中，执行栈中空闲后)，queue中的函数会按队列执行。
+ 先去微任务的queue，再去执行宏任务队列中的callback。
+ /****************************/ js先执行同步任务，即先执行栈中的任务，最后执行挂起（异步）任务队列。
+ 首先执行同步代码，这属于宏任务
+ 当执行完所有同步代码后，执行栈为空，查询是否有异步代码需要执行
+ 执行所有微任务
+ 当执行完所有微任务后，如有必要会渲染页面
+ 然后开始下一轮 Event Loop，执行宏任务中的异步代码，也就是 setTimeout 中的回调函数
 
 * 宏任务有
 > I/O	
