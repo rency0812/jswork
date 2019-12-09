@@ -39,7 +39,6 @@ export default {
     getBase64 (url, cb) {
       const Img = document.querySelector('#img')
       Img.crossOrigin = 'Anonymous'
-      // Img.src = url
       let dataURL = ''
       Img.onload = function () {
         const canvas = document.createElement('canvas')
@@ -51,6 +50,7 @@ export default {
         dataURL = canvas.toDataURL('image/jpeg')
         console.log(dataURL)
       }
+      // Img.src = url
     },
     touch (e) {
       // console.log(e)
@@ -107,7 +107,7 @@ export default {
       // return s
     },
     async name () {
-      await console.log(1) // 第一轮执行 和 和正常函数一样
+      await console.log(1) // 第一轮执行 和 和 正常函数一样
       console.log(2)
     },
     sps () { // test async promise setTimeout
@@ -121,11 +121,11 @@ export default {
       }
       // 执行开始
       console.log('1') // 1
-      setTimeout(function () {
+      setTimeout(function () { // 宏任务队列
         console.log('end') // 8
       }, 0)
       async1() // async/await
-      new Promise(function (resolve) {
+      new Promise(function (resolve) { // 进入微任务队列
         console.log('4') // 4
         resolve()
       }).then(function () {
