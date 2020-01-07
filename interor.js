@@ -11,11 +11,12 @@ server.interceptors.request.use(config => {
   return Promise.reject(err)
 })
 server.interceptors.response.use(res => {
-  if (res.data.code !== 1) {
-    toast(res.data.msg)
-    return res.data
+  const data = res.data
+  toast(data.msg)
+  if (data.code!==1) {
+    return;
   }
-  return res.data
+  return data
 }, err => {
   toast('服务错误或连接超时')
   console.log(err)
