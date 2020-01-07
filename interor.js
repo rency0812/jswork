@@ -19,7 +19,7 @@ server.interceptors.response.use(res => {
   return data
 }, err => {
   toast('服务错误或连接超时')
-  console.log(err)
+  console.log(err.request.status)
   return Promise.reject(err)
 })
 
