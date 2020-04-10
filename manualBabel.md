@@ -1,3 +1,27 @@
+##### webpack dllPlugin[vue cli3]
+* vue add dll
+* vue.config.js添加选项
+```
+pluginOptions: {
+  dll: {
+    // 要处理的库
+    entry: ['vue', 'vue-router', 'axios'],
+    // dll 编译后的链接库的地址
+    cacheFilePath: path.resolve(__dirname, './public')
+  }
+}
+```
+* 听说还要在vue.config加这个（可能是cli2），不是很清楚。如下：
+```
+const webpack = require("webpack");
+plugins.push(
+  new webpack.DllReferencePlugin({
+    context: process.cwd(),
+    manifest: require('./public/dll/dll.manifest.json')
+  })
+);
+```
+
 ##### ES6手动转码；
 * 全局安装babel-cli npm i babel-cli -g
 * npm i babel-core -D
